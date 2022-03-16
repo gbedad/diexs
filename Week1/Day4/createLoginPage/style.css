@@ -1,0 +1,171 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* check div dimensions when applying css */
+.bordureTest {
+  border: 1px solid red;
+}
+/* main style  */
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70vw;
+  height: 75vh;
+}
+
+.loginForm,
+.rightSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  padding: 0 30px;
+}
+
+/* right side container style  */
+.rightSide {
+  background-image: linear-gradient(
+    110deg,
+    rgb(70, 9, 90),
+    rgba(75, 1, 106, 1)
+  );
+  color: white;
+}
+.rightSide p {
+  text-align: center;
+  margin: 1px 0 20px 0;
+  font-weight: 300;
+}
+.hello {
+  font-size: 2.5rem;
+  margin: 0;
+}
+.icon {
+  font-size: 4rem;
+}
+.register {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 30px;
+  color: white;
+  padding: 10px 20px;
+}
+
+/* left side container  */
+
+.loginForm {
+  background-color: rgb(247, 245, 245);
+  position: relative;
+}
+.loginForm h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.formInput {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+.formInput input {
+  margin-bottom: 20px;
+  height: 2.2rem;
+  border: none;
+  padding-left: 8px;
+  background-color: rgb(232, 229, 229);
+}
+.formInput input:last-child {
+  background-image: linear-gradient(
+    110deg,
+    rgb(113, 15, 145),
+    rgba(113, 15, 146, 1)
+  );
+  color: white;
+  font-weight: bold;
+}
+.formAdd {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin: 10px 0 30px 0;
+}
+/* label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(150, 147, 147);
+}
+input[type='checkbox'] {
+  top: 1px;
+} */
+label {
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+  color: rgb(150, 147, 147);
+}
+input[type='checkbox'] {
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  margin: 0;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  color: rgb(150, 147, 147);
+}
+
+/* Cancel effects in link */
+.forgotPassword {
+  text-decoration: none;
+}
+a:link {
+  color: rgb(150, 147, 147);
+}
+a:visited {
+  color: rgb(150, 147, 147);
+}
+
+.social {
+  height: 80px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: rgb(150, 147, 147);
+  margin: 0;
+}
+.connect {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.line {
+  width: 100px;
+  margin: 0;
+}
+.socialIcons i {
+  margin: 0 1em;
+}
+.info {
+  position: absolute;
+  bottom: 5px;
+  font-size: 0.8rem;
+  color: rgb(150, 147, 147);
+}
