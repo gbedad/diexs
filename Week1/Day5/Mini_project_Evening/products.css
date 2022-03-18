@@ -74,7 +74,7 @@ img {
   left: calc(50% - 70px);
   visibility: hidden;
 }
-.shopIcons i {
+.shopIcons span i {
   width: 40px;
   height: 40px;
   background-color: rgb(247, 247, 247);
@@ -84,7 +84,7 @@ img {
   /* visibility: hidden; */
 }
 
-.shopIcons i:hover {
+.shopIcons span i:hover {
   width: 40px;
   height: 40px;
   background-color: rgb(0, 139, 67);
@@ -93,6 +93,36 @@ img {
   line-height: 40px;
   margin-left: 5px;
   cursor: pointer;
+}
+.tooltip {
+  position: relative; /* making the .tooltip span a container for the tooltip text */
+}
+.tooltip:before {
+  content: attr(data-text); /* here's the magic */
+  position: absolute;
+
+  /* vertically center */
+  /* top: 50%; */
+  transform: translateY(-100%);
+
+  /* move to right */
+  /* left: 100%; */
+  top: -20px;
+  left: 0;
+
+  /* basic styles */
+  width: 80px;
+  padding: 5px;
+  border-radius: 6px;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  font-size: 0.8em;
+
+  display: none; /* hide by default */
+}
+.tooltip:hover:before {
+  display: block;
 }
 .prices {
   margin-bottom: 10px;
