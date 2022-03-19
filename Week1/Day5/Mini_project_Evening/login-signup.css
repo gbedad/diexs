@@ -1,0 +1,138 @@
+body {
+  padding: 0;
+  box-sizing: border-box;
+  width: 100vw;
+  margin: 0 auto;
+}
+* {
+  font-family: 'Prompt', sans-serif;
+}
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+.topNav {
+  height: 60px;
+  background-color: rgb(52, 0, 52);
+  padding: 0 20px;
+}
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: goldenrod;
+  float: left;
+}
+nav {
+  float: right;
+}
+nav ul {
+  text-align: center;
+}
+nav li {
+  display: inline-block;
+  list-style-type: none;
+  margin-left: 10px;
+  color: white;
+}
+a:link {
+  text-decoration: none;
+  color: #fff;
+}
+a:visited {
+  color: #fff;
+}
+.container {
+  margin: 0 auto;
+  width: 100%;
+  height: calc(100vh - 60px);
+  background-image: url('./assets/pexels-pavel-danilyuk-8294566.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* width: 100%; */
+  margin: 0;
+  color: #ececec;
+}
+
+.loginSignupCard {
+  width: 35vw;
+  height: auto;
+  padding: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* transform: translateX(-50%); */
+
+  /* box-shadow: 3px 2px 5px 2px rgb(222, 221, 221); */
+  border-radius: 10px;
+  margin: 0 auto;
+  background-color: white;
+}
+.loginSignupCard h3 {
+  color: purple;
+}
+.loginSignupCard input {
+  width: 80%;
+  margin: 10px auto;
+  line-height: 2em;
+  border: none;
+  background-color: rgb(239, 239, 239);
+  border-radius: 5px;
+  padding-left: 5px;
+  margin-left: 10%;
+  font-size: 1.1em;
+}
+
+/* .loginSignupCard button {
+  width: 100px;
+  text-align: center;
+  height: 2em;
+  border: none;
+  background-color: purple;
+  border-radius: 5px;
+  padding: 5px;
+  margin-left: 10%;
+  margin-top: 10px;
+  color: #fff;
+  font-size: 1.1em;
+} */
+.fakeButton {
+  width: 100px;
+  text-align: center;
+
+  border: none;
+  background-color: purple;
+  border-radius: 5px;
+  height: 2em;
+  margin-left: 10%;
+  line-height: 2em;
+  color: #fff;
+  font-size: 1.1em;
+  margin-top: 10px;
+}
+.fakebutton:hover {
+  background-color: white;
+  border: 1px solid purple;
+  color: purple;
+  cursor: pointer;
+}
+
+/* .loginSignupCard button:hover {
+  background-color: white;
+  border: 1px solid purple;
+  color: purple;
+  cursor: pointer;
+} */
+/* .loginSignupCard a:hover {
+  color: black;
+} */
+.registred {
+  color: green;
+  text-align: center;
+}
+.registred a {
+  color: goldenrod;
+}
