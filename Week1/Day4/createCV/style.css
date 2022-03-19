@@ -187,6 +187,8 @@ span {
   }
   .container {
     box-shadow: none;
+    background-color: black;
+    color: #fff;
   }
 }
 
