@@ -1,0 +1,287 @@
+/* Reset css */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: calc(100% + 400px);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+span,
+p {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+  list-style-position: inside;
+  margin-left: -40px;
+}
+p {
+  overflow: hidden;
+}
+/* End reset CSS */
+
+/* General styles on all elements */
+* {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+}
+.bordureTest {
+  /* border: 1px solid green; */
+  border-right: 1px solid rgba(255, 191, 0, 0.5);
+  /* border-bottom: 1px solid rgba(255, 191, 0, 1); */
+  /* box-shadow: 1px 3px 4px 4px rgb(255, 191, 0); */
+}
+hr {
+  border-top: 1px solid rgba(255, 191, 0, 0.4);
+}
+
+.container {
+  max-width: 960px;
+  margin: 10px auto;
+  padding: 50px;
+  background-color: rgb(254, 252, 252);
+  box-shadow: 2px 2px 4px 4px rgb(211, 211, 211);
+  min-height: 1300px;
+  height: 100%;
+}
+/* .lineSmall {
+  width: 50px;
+  border: 2px solid;
+  margin: 5px 0 5px 0;
+  color: rgb(255, 191, 0);
+} */
+.under-line {
+  /* text-decoration: underline; */
+  text-decoration: underline solid rgb(255, 191, 0) 15%;
+  /* text-decoration-color: rgb(255, 191, 0); */
+  /* text-decoration-thickness: 5px; */
+}
+
+header {
+  height: 250px;
+
+  position: relative;
+}
+
+.identity {
+  float: left;
+}
+/* .identity .lineSmall {
+  margin-bottom: 20px;
+} */
+
+.surname {
+  font-size: 4em;
+  font-weight: 400;
+}
+.name {
+  font-size: 3em;
+  font-weight: 100;
+}
+.prof {
+  font-size: 1.5em;
+  font-weight: 300;
+}
+.identity hr {
+  width: 50px;
+  border: 3px solid;
+  position: relative;
+  left: -100px;
+  color: rgb(255, 191, 0);
+  margin-bottom: 20px;
+  /* float: left; */
+}
+.icon {
+  font-size: 2em;
+  color: rgb(255, 191, 0);
+  position: relative;
+  top: 40px;
+}
+.icon:hover {
+  cursor: pointer;
+}
+img {
+  float: right;
+  border-bottom: solid 8px rgb(255, 191, 0);
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  object-position: 0px 10%;
+}
+.main {
+  position: relative;
+  top: 30px;
+  width: 100%;
+  min-height: max-content;
+  height: calc(100% + 400px);
+}
+.main h2 {
+  font-weight: 400;
+}
+.detail {
+  position: absolute;
+  top: 0;
+  left: 45%;
+  height: 100%;
+}
+
+/* .profile .lineSmall {
+  margin-bottom: 15px;
+} */
+
+.detail p,
+h4,
+span {
+  margin: 5px 0;
+}
+.detail,
+.info h4 {
+  font-weight: 600;
+}
+.detail p {
+  line-height: 1.2em;
+  margin-bottom: 20px;
+  font-weight: 200;
+}
+.info {
+  width: 40%;
+  margin: 0;
+}
+
+/* .info .lineSmall {
+  margin-bottom: 15px;
+} */
+.print {
+  display: none;
+}
+@media screen and (max-width: 479px) {
+  img {
+    float: left;
+    border-bottom: solid 8px rgb(255, 191, 0);
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    object-position: 0px 10%;
+  }
+  #lineHeader {
+    display: none;
+  }
+  .icon {
+    display: none;
+  }
+  .info {
+    position: relative;
+    width: 100%;
+    border: none;
+  }
+
+  .detail {
+    position: relative;
+
+    left: 0;
+    height: 100%;
+  }
+  .container {
+    box-shadow: none;
+  }
+}
+
+.tooltip {
+  position: relative; /* making the .tooltip span a container for the tooltip text */
+}
+.tooltip:before {
+  content: attr(data-text); /* here's the magic */
+  position: absolute;
+
+  /* vertically center */
+  /* top: 50%; */
+  transform: translateY(-100%);
+
+  /* move to right */
+  /* left: 100%; */
+  top: 50px;
+  left: 100px;
+
+  /* basic styles */
+  width: 300px;
+  padding: 10px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  text-align: left;
+  font-size: 0.8em;
+
+  display: none; /* hide by default */
+}
+.tooltip:hover:before {
+  display: block;
+}
+
+@media screen and (min-width: 480px) and (max-width: 600px) {
+  img {
+    float: left;
+    border-bottom: solid 8px rgb(255, 191, 0);
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    object-position: 0px 10%;
+  }
+  .icon {
+    display: none;
+  }
+  #lineHeader {
+    display: none;
+  }
+  .info {
+    position: relative;
+    width: 100%;
+  }
+  .contact {
+    float: right;
+  }
+  .detail {
+    position: relative;
+
+    left: 0;
+    height: 100%;
+  }
+  .container {
+    box-shadow: none;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .icon {
+    display: none;
+  }
+}
+
+@media print {
+  /* ... */
+  /* @page {
+    size: auto;
+  } */
+  .print {
+    display: block;
+  }
+  @page :footer {
+    display: none;
+  }
+
+  @page :header {
+    display: none;
+  }
+  body {
+    padding-top: 20px;
+    padding-bottom: 60px;
+  }
+  .container {
+    box-shadow: none;
+  }
+  .icon {
+    visibility: hidden;
+  }
+}
