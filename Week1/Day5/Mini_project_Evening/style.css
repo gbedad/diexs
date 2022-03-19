@@ -141,6 +141,20 @@ h1 {
     padding: 5px;
     font-weight: 300;
   }
+  .icon:nth-of-type(2) {
+    position: relative;
+    top: 15%;
+    left: 40%;
+    color: cyan;
+    font-size: 3em;
+  }
+  .icon:nth-of-type(3) {
+    position: relative;
+    top: 30%;
+    left: 25%;
+    color: tomato;
+    font-size: 5em;
+  }
   .pageFooter {
     height: 60px;
     background-color: transparent;
