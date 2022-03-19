@@ -16,6 +16,17 @@ h4 {
 .topNav {
   height: 60px;
   background-color: rgb(52, 0, 52);
+  padding: 0 40px;
+}
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  line-height: 60px;
+  color: white;
+  font-size: 3em;
+  color: cyan;
+  float: left;
 }
 nav ul {
   float: right;
