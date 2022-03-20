@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  padding: 0;
+  margin: 0 auto;
+}
+.container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 80vw;
+  height: 90vh;
+  border: 2px solid red;
+  padding: 10px;
+}
+.box {
+  background-color: #87d1ee;
+  height: 15%;
+  width: 100%;
+  color: white;
+  font-size: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box:nth-child(2) {
+  height: 50%;
+  width: 50vw;
+}
