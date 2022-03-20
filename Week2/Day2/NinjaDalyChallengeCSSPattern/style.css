@@ -1,0 +1,59 @@
+.container-grid {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(16, 40px);
+  grid-template-rows: repeat(16, 40px);
+  grid-gap: 3px;
+}
+.one:nth-child(n + 1) {
+  background-color: #ff7001;
+}
+.two:nth-child(n + 2) {
+  background-color: #ffb26c;
+}
+.three:nth-child(n + 3) {
+  background-color: #a84a00;
+}
+
+.container2 {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(16, 40px);
+  grid-template-rows: repeat(16, 40px);
+  grid-gap: 3px;
+}
+
+.boxone:nth-child(n + 1) {
+  background-color: #cccccc;
+}
+.boxtwo:nth-child(n + 2) {
+  background-color: #999999;
+}
+.boxthree:nth-child(n + 3) {
+  background-color: #666666;
+}
+.boxfour:nth-child(n + 4) {
+  background-color: #333333;
+}
+
+.container3 {
+  margin: 0 auto;
+  border: 4px solid red;
+
+  display: grid;
+  grid-template-columns: repeat(16, 40px);
+  grid-template-rows: repeat(9, 40px);
+}
+
+.boxwhite:nth-child(2n + 1) {
+  background-color: white;
+}
+.boxpink:nth-child(2n + 2) {
+  background-color: #e67f7e;
+}
+.boxpink2:nth-child(n + 1) {
+  background-color: #e67f7e;
+}
+.boxred:nth-child(n + 2) {
+  background-color: #d83e3a;
+}
