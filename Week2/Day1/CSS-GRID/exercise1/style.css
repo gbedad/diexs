@@ -1,0 +1,24 @@
+.container-grid {
+  justify-content: flex-start;
+  border: 3px solid;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 200px 400px;
+  grid-template-rows: repeat(4, 80px);
+  max-width: 60vw;
+  height: 500px;
+  grid-gap: 20px;
+}
+.grid-element {
+  border: 3px solid;
+  height: 80px;
+  background-color: cornflowerblue;
+}
+.grid-element:nth-child(2n + 1) {
+  background-color: rosybrown;
+}
+.last {
+  border: 3px solid;
+  background-color: burlywood;
+  grid-column: span 2;
+}
