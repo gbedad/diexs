@@ -1,0 +1,26 @@
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  border: 2px solid green;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  height: 500px;
+  border: 1px solid red;
+  width: 80%;
+  margin: 0 auto;
+}
+.center {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 0.5;
+}
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

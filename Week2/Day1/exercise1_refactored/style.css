@@ -1,0 +1,28 @@
+.container {
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  height: 600px;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  color: white;
+  background-color: rgb(135, 197, 246);
+  color: white;
+  height: 50px;
+  width: 100%;
+  flex-grow: 0.2;
+}
+.special {
+  width: 70%;
+  flex-grow: 0.4;
+}
