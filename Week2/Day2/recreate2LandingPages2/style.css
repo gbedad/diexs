@@ -18,8 +18,14 @@ li,
 ul,
 span {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Prompt', Arial, Helvetica, sans-serif;
   color: gray;
+}
+.bottom ul {
+  list-style: none;
+  list-style-position: inside;
+  padding-left: 0;
+  font-weight: 200;
 }
 
 li {
@@ -47,10 +53,31 @@ header li {
   justify-content: center;
   align-items: center;
 }
+.left nav ul li:nth-child(2) {
+  font-weight: 600;
+}
+.logo {
+  display: flex;
+}
+.logo:first-child {
+  font-size: 26px;
+}
+.logo span {
+  font-weight: 600;
+}
+.logo i {
+  margin-right: 10px;
+  font-size: 30px;
+}
 .right {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#signin {
+  border: 1px solid rgb(0, 166, 255);
+  padding: 5px;
+  border-radius: 5px;
 }
 main {
   display: flex;
@@ -81,7 +108,7 @@ main {
   align-items: center;
   margin-top: 10px;
 }
-.country {
+.border-blue {
   border: 1px solid rgb(0, 166, 255);
   color: rgb(0, 166, 255);
   height: 30px;
@@ -126,9 +153,12 @@ main {
   display: flex;
   justify-content: center;
   align-items: baseline;
+  font-weight: 200;
 }
 .noprice {
-  margin: 20px 0 5px 0;
+  /* margin: 20px 0 5px 0; */
+  line-height: 61px;
+  font-weight: 200;
 }
 .price p {
   font-size: 40px;
@@ -139,10 +169,14 @@ main {
 .top .btn {
   background-color: green;
   color: white;
+  font-size: 10px;
   font-weight: 100;
   border-radius: 3px;
   border: none;
   height: 30px;
+}
+.top .btn i {
+  margin-left: 5px;
 }
 .bottom {
   background-color: rgb(9, 42, 87);
@@ -150,15 +184,23 @@ main {
   border-radius: 0 0 5px 5px;
   padding: 10px;
 }
-.bottom li,
-h4 {
+.bottom li {
   color: white;
   font-weight: 100;
+  font-size: smaller;
+}
+.bottom h4 {
+  color: white;
+  font-weight: 300;
 }
 
 @media only screen and (max-width: 470px) {
+  header {
+    height: fit-content;
+  }
   header li {
     display: block;
+    font-size: 10px;
   }
   h1 {
     font-size: 1.5em;
@@ -171,6 +213,7 @@ h4 {
   }
   .card {
     width: 100%;
+    margin-bottom: 15px;
   }
   .title h1 {
     font-size: 1.5em;
@@ -178,6 +221,9 @@ h4 {
   }
   .top {
     text-align: center;
+  }
+  .bottom li {
+    display: block;
   }
 }
 
@@ -193,11 +239,26 @@ h4 {
     justify-content: center;
     align-items: center;
   }
-  .card {
+  /* .card {
     width: 80%;
+  } */
+  .card {
+    width: 100%;
+    margin-bottom: 15px;
   }
   .title h1 {
     font-size: 1.5em;
     width: 100%;
+  }
+  .bottom li {
+    display: block;
+  }
+}
+@media only screen and (min-width: 741px) and (max-width: 840px) {
+  header {
+    height: fit-content;
+  }
+  header li {
+    display: block;
   }
 }
