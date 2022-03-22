@@ -27,34 +27,45 @@
     "
       >
         <div class="grid-container">
-          <label for="" class="resp">FIRST NAME*</label>
-          <label for="" class="resp">LAST NAME*</label>
-          <label for=""class="resp">EMAIL (<span>PRIVACY POLICY</span>)*</label>
-          <input type="text" class="resp"/>
+          <div class="input-zone">
+            <label for="" class="resp">FIRST NAME*</label>
+            <input type="text" class="resp"/>
+          </div>
+          <div class="input-zone">
+            <label for="" class="resp">LAST NAME*</label>
+            <input type="text"class="resp" />
+          </div>
+          <div class="input-zone">
+            <label for=""class="resp">EMAIL (<span>PRIVACY POLICY</span>)*</label>
+            <input type="email" class="resp"/>
+          </div>
+          <div class="input-zone">
+            <label for=""class="resp">PHONE NUMBER*</label>
+            <input type="text"class="resp" />
+          </div>
+          <div class="input-zone">
+            <label for="class="resp"">WEBSITE URL*</label>
+            <input type="text"class="resp" />
+          </div>
+          <div class="input-zone">
+            <label for=""class="resp">COMPANY NAME*</label>
+            <input type="text" class="resp"/>
+          </div>
 
-          <input type="text"class="resp" />
+          <div class="input-zone large">
+            <label for="" class="large">HOW MANY EMPLOYEES WORK THERE*</label>
+            <select name="employees" class="large" required>
+              <option value="" disabled selected hidden>
+                - Please, select -
+              </option>
+              <option type="number">1</option>
+              <option type="number">10</option>
+              <option type="number">20</option>
+              <option type="number">50</option>
+            </select>
+          </div>
 
-          <input type="email" class="resp"/>
-
-          <label for=""class="resp">PHONE NUMBER*</label>
-          <label for="class="resp"">WEBSITE URL*</label>
-          <label for=""class="resp">COMPANY NAME*</label>
-          <input type="text"class="resp" />
-
-          <input type="text"class="resp" />
-
-          <input type="text" class="resp"/>
-          <label for="" class="large">HOW MANY EMPLOYEES WORK THERE*</label>
-          <select name="employees" class="large" required>
-            <option value="" disabled selected hidden>
-              - Please, select -
-            </option>
-            <option type="number">1</option>
-            <option type="number">10</option>
-            <option type="number">20</option>
-            <option type="number">50</option>
-          </select>
-          <!-- <input type="text" class="large" /> -->
+         
           <label for="" class="large"
             >DOES YOUR COMPANY SELL ANY OF THE FOLLOWING SERVICES:</label
           >
@@ -65,6 +76,8 @@
           <input type="checkbox" class="cb" />
           <label for="" class="check-label">SEO/SEM</label>
 
+
+          <div class="input-zone large">
           <label for="" class="large">ADVERTISING AGENCY SERVICES*</label>
           <select name="advertising" class="large" required>
             <option value="" disabled selected hidden>
@@ -72,7 +85,7 @@
             </option>
             <option type="number"></option>
           </select>
-
+          </div>
           <input type="checkbox" class="cb" />
           <label for="" class="check-label"
             >SUBSCRIBE TO HUBSPOT'S MARKETING BLOG</label
