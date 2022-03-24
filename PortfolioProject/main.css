@@ -32,3 +32,9 @@ body {
 
   z-index: 2;
 }
+
+.img-thumbnail {
+  max-width: 100%;
+  min-height: 200px;
+  height: 200px;
+}
