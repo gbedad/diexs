@@ -25,6 +25,11 @@ let idx = userInput.indexOf(',');
 let num1 = userInput.substring(0, idx);
 let num2 = userInput.substring(idx + 1);
 
+// let setee = userInput.split(/[ ,]+/);
+// let myvar = userInput.replace(/,/g, '+');
+// console.log(Number(myvar));
+// console.log(myvar * 1);
+
 num1 = Number(num1);
 num2 = Number(num2);
 

@@ -12,14 +12,27 @@ let myWatchedSeries = ['black mirror', 'money heist', 'the big bang theory'];
 // Variables
 
 let myWatchedSeriesLength = myWatchedSeries.length;
+let lastSerie = myWatchedSeries[myWatchedSeriesLength - 1];
+
+let myWatchedSeriesReduced = myWatchedSeries.splice(
+  0,
+  myWatchedSeriesLength - 1
+);
+let firstSeries = myWatchedSeriesReduced.join(',');
+console.log(firstSeries);
 
 let myWatchedSeriesSentence = `${myWatchedSeries[0]}, ${myWatchedSeries[1]} and ${myWatchedSeries[2]}`;
+myWatchedSeriesSentence = `${firstSeries} and ${lastSerie}`;
+console.log(myWatchedSeriesSentence);
 
 console.log(
   `I watched ${myWatchedSeriesLength} series : ${myWatchedSeriesSentence}`
 );
+console.log(myWatchedSeries);
+let posBigBang = myWatchedSeries.indexOf('the big bang theory');
+console.log(posBigBang);
 
-myWatchedSeries[2] = 'friends';
+myWatchedSeries[posBigBang] = 'friends';
 
 myWatchedSeries.push('happy days');
 
