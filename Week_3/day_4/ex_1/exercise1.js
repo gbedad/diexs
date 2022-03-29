@@ -66,3 +66,22 @@ if (numberOnline === 0) {
     `${users[0]} and ${users[1]} and ${numberOnline - 2} more are online`
   );
 }
+
+// Seconde version with switch case
+
+switch (numberOnline) {
+  case 0:
+    onsole.log('no one is online');
+    break;
+  case 1:
+    console.log(`${users[0]} is online`);
+    break;
+  case 2:
+    console.log(`${users[0]} and ${users[1]} are online`);
+    break;
+
+  default:
+    console.log(
+      `${users[0]} and ${users[1]} and ${numberOnline - 2} more are online`
+    );
+}
