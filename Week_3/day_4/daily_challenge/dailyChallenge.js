@@ -1,4 +1,4 @@
-let sentence = 'This dinner is bad !';
+let sentence = 'This dinner is not so bad !';
 
 let wordNot = sentence.indexOf('not');
 
