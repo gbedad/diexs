@@ -30,10 +30,10 @@ if (newDog === 'Chihuahua') {
 
 // Exercise 3 Even or Odd
 
-let userInput = Number(prompt('Enter a number'));
+let userInput = prompt('Enter a number');
 console.log(typeof userInput);
 
-if (isNaN(userInput)) {
+if (isNaN(userInput) || userInput === '') {
   console.log(`${userInput} is not a number`);
 } else if (Number(userInput) === 0) {
   console.log('0 is neither even or odd');
