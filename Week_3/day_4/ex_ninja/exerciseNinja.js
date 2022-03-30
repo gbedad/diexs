@@ -1,8 +1,12 @@
 // Exercise 1
 
-const person1Year = prompt('Enter the year of birth person 1');
+const person1Year = Number(prompt('Enter the year of birth person 1'));
 
-const person2Year = prompt('Enter the year of birth person 2');
+const person2Year = Number(prompt('Enter the year of birth person 2'));
+
+if (isNaN(person1Year) || isNaN(person2Year)) {
+  console.log('Enter a valid date');
+}
 
 let today = new Date().getFullYear();
 
@@ -50,7 +54,7 @@ console.log(
 //_____________________________
 /* A variable that is assigned to a value. */
 let zipcode = prompt('Enter your zipcode');
-
+let zipcodeLength = zipcode.length;
 const regex = /^([0-9]{5})$/gm;
 
 let checkCode = regex.test(zipcode);
@@ -63,18 +67,24 @@ if (checkCode === true) {
 
 // Version without regex
 
-if (
-  zipcode[0] != NaN &&
-  zipcode[1] != NaN &&
-  zipcode[2] != NaN &&
-  zipcode[3] != NaN &&
-  zipcode[4] != NaN
-) {
-  console.log('Success2');
+console.log('checkisnan', isNaN(Number(zipcode)));
+if (zipcodeLength !== 5 || isNaN(zipcode)) {
+  console.log('Error in your zipcode');
 } else {
-  console.log('Error 2');
+  console.log('Success 2');
 }
-console.log(zipcode[0] != NaN);
+// if (
+//   zipcode[0] != NaN &&
+//   zipcode[1] != NaN &&
+//   zipcode[2] != NaN &&
+//   zipcode[3] != NaN &&
+//   zipcode[4] != NaN
+// ) {
+//   console.log('Success2');
+// } else {
+//   console.log('Error 2');
+// }
+// console.log(zipcode[0] != NaN);
 
 //********* */
 // Exercise 3 : Secret Word
@@ -97,12 +107,12 @@ let replaced = userWord
 console.log(replaced);
 //******************** */
 
-let details = {
-  my: 'name',
-  is: 'Rudolf',
-  the: 'raindeer',
-};
+// let details = {
+//   my: 'name',
+//   is: 'Rudolf',
+//   the: 'raindeer',
+// };
 
-for (const property in details) {
-  console.log(`${property} ${details[property]}`);
-}
+// for (const property in details) {
+//   console.log(`${property} ${details[property]}`);
+// }
