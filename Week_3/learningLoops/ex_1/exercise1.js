@@ -52,10 +52,13 @@ for (const i in people) {
 
 let myFavoriteColors = ['purple', 'blue', 'green', 'orange', 'magenta'];
 
-let sentence = '';
-for (let i = 0; i < myFavoriteColors.length; i++) {
-  sentence = sentence + `My #${i + 1} choice is ${myFavoriteColors[i]},`;
+let sentence = `My #1 choice is ${myFavoriteColors[0]}, `;
+for (let i = 1; i < myFavoriteColors.length; i++) {
+  sentence = sentence + `my #${i + 1} choice is ${myFavoriteColors[i]},`;
 }
+lastComma = sentence.lastIndexOf(',');
+console.log(sentence.lastIndexOf(','));
+sentence.charAt(lastComma).replace(',', '.');
 console.log(sentence);
 
 // Bonus
@@ -93,18 +96,18 @@ console.log(sentence3);
 // Exercise 3
 
 // V1
-// let userInput = prompt('Enter a number');
-// userInput = Number(userInput);
+//let userInput1 = prompt('Enter a number');
+//userInput1 = Number(userInput1);
 
-// do {
-//   userInput = prompt('Enter a number');
-// } while (userInput < 10);
+do {
+  userInput1 = prompt('Enter a number');
+} while (userInput1 < 10);
 
 // V2
-let userInput = 0;
-while (userInput < 10) {
-  userInput = prompt('Enter a number');
-  console.log(userInput);
+let userInput2 = 0;
+while (userInput2 < 10) {
+  userInput2 = prompt('Enter a number');
+  console.log(userInput2);
 }
 
 // *********** End  exercise 3
@@ -162,12 +165,12 @@ let family = {
   hasCar: true,
 };
 
-for (const key in family) {
-  console.log(key);
+for (const property in family) {
+  console.log(property);
 }
 
-for (const key in family) {
-  console.log(family[key]);
+for (const property in family) {
+  console.log(family[property]);
 }
 
 // Exercise 6
@@ -184,17 +187,24 @@ for (const property in details) {
 
 // Exercise 7 loops secret groups
 //____________________________________
-function secretGroup(arr) {
-  let secret = '';
-  arr.sort();
-  arr.forEach((element) => {
-    let first = element[0];
-    secret += first;
-  });
-  return secret;
-}
+// function secretGroup(arr) {
+//   let secret = '';
+//   arr.sort();
+//   arr.forEach((element) => {
+//     let first = element[0];
+//     secret += first;
+//   });
+//   return secret;
+// }
+// let answer = secretGroup(names);
+// console.log(answer);
 
 let names = ['Jack', 'Philip', 'Sarah', 'Amanda', 'Bernard', 'Kyle'];
 
-let answer = secretGroup(names);
-console.log(answer);
+let secret = '';
+let namesLength = names.length;
+names.sort();
+for (let i = 0; i < namesLength; i++) {
+  secret = secret + names[i][0];
+}
+console.log(secret);
