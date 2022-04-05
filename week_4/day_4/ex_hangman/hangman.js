@@ -46,7 +46,6 @@ let checkIfLetter = (letter) => {
   if (letter.length > 1 || !isNaN(letter)) {
     alert('Should be a letter and only one');
   }
-  return false;
 };
 
 let playHangman = () => {
@@ -57,6 +56,7 @@ let playHangman = () => {
   let letters = [];
   while (myGuess !== player1Input && count <= 10) {
     let player2Input = prompt('Enter a letter');
+    checkIfLetter(player2Input);
 
     count += 1;
     if (!letters.includes(player2Input)) {
