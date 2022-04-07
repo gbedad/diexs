@@ -7,6 +7,7 @@ Show a list of all the guesses after each turn. In your code prevent player 2 fr
 If player 1 wins, display a message that says CONGRATS YOU WIN.*/
 
 let stars = [];
+let lettersCorrect = [];
 
 const show = (word) => {
   let len = word.length;
@@ -25,6 +26,7 @@ const checkLetter = (word, letter) => {
     if (letter === arr[char]) {
       let idx = char;
       start.splice(idx, 1, letter);
+      lettersCorrect.push(letter);
     }
   }
   let wordReplaced = start.join('');
@@ -69,6 +71,18 @@ let playHangman = () => {
     if (player1Input === myGuess) {
       let message = `You have guessed the word "${player1Input}" in ${count} guesses`;
       return message;
+    } else if (lettersCorrect.length === player1Input.length - 2) {
+      let answer = prompt('Do you want to propose a word (y/n) ?');
+      if (answer === 'y') {
+        let newInput = prompt('Enter your proposal');
+        if (newInput === player1Input) {
+          return `Good jod`;
+        } else {
+          return 'You lose';
+        }
+      } else {
+        continue;
+      }
     }
   }
   let message = `You lose, the correct word was : ${player1Input}`;
