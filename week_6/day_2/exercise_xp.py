@@ -25,14 +25,17 @@ else:
 Create a variable called name, and set it’s value to your name.
 Create a variable called age, and set it’s value to your age.
 Create a variable called shoe_size, and set it’s value to your shoe size.
-Create a variable called info and set it’s value to an interesting sentence about yourself. The sentence must contain all the variables created in parts 1, 2 and 3.
+Create a variable called info and set it’s value to an interesting sentence
+about yourself. The sentence must contain all the variables created in parts 1, 2 and 3.
 Have your code print the info message.
 Run your code
 """
 name = "Gerald"
 age = 12
 shoe_size = 39
-info = f"My name is {name} and I am {age} years old. I am sad because the shoes that I want start a size 40 and mine is {shoe_size}. "
+info = f"My name is {name} and I am {age} years old." \
+       f"I am sad because the shoes that I want start a size 40 " \
+       f"and mine is {shoe_size}. "
 print(info)
 
 # Exercise 6
@@ -67,7 +70,7 @@ input_name = input("Enter your name: ")
 if my_name == input_name:
     print("So nice, we have the same name!")
 else:
-    print(f"Nevermind, {input_name}, your name is not that bad! ")
+    print(f"Never-mind, {input_name}, your name is not that bad! ")
 
 # Exercise 9: Tall Enough To Ride A Roller Coaster
 """
@@ -81,6 +84,3 @@ if input_height > 145:
     print(f"Your height is {input_height} inches, you are tall enough to ride.")
 else:
     print(f"Sorry, your height is only {input_height} inches, you need to grow some more to ride.")
-
-
-
