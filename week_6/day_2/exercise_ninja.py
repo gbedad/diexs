@@ -45,11 +45,10 @@ print(f"This text have {len(my_text)} characters.")
 # Each time a user successfully sets a new longest sentence, print a congratulations message.
 
 sentence = input("Enter the longest word without A: ")
-last_sentence = sentence
-sentence = input("Enter a longer word without A: ")
+last_sentence: str = sentence
 while "a" in sentence:
     sentence = input("Error, this sentence contain a. Enter the longest word without A: ")
-
+sentence = input("Enter a longer word without A: ")
 while len(sentence) > len(last_sentence):
     last_sentence = sentence
     print("Congratulations, Your sentence is longer")
