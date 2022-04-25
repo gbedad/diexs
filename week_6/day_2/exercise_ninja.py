@@ -46,11 +46,16 @@ print(f"This text have {len(my_text)} characters.")
 
 sentence = input("Enter the longest word without A: ")
 last_sentence = sentence
-if "a" in sentence:
+sentence = input("Enter a longer word without A: ")
+while "a" in sentence:
     sentence = input("Error, this sentence contain a. Enter the longest word without A: ")
-elif "a" not in sentence:
-    sentence = input("Enter a longer word without A: ")
-    if len(sentence) > len(last_sentence):
-        print("Congratulations, Your sentence is longer")
-else:
-    print("Bye!")
+
+while len(sentence) > len(last_sentence):
+    last_sentence = sentence
+    print("Congratulations, Your sentence is longer")
+    sentence = input("Enter again: ")
+    if len(sentence) < len(last_sentence) or "a" in sentence:
+        print("Bye")
+
+
+
