@@ -8,14 +8,14 @@
 # Concatenate my_fav_numbers and friend_fav_numbers to a new variable called our_fav_numbers.
 import math
 
-my_fav_numbers = [3, 7, 11, 15, 30, 8, 26]
-my_fav_numbers.append(13)
-my_fav_numbers.append(17)
+my_fav_numbers = {3, 7, 11, 15, 30, 8, 26}
+my_fav_numbers.add(13)
+my_fav_numbers.add(17)
 print(my_fav_numbers)
-my_fav_numbers.pop()
+my_fav_numbers.remove(26)
 print(my_fav_numbers)
-friend_fav_numbers = [12, 37, 34, 67]
-our_fav_numbers = my_fav_numbers + friend_fav_numbers
+friend_fav_numbers = {12, 37, 34, 67}
+our_fav_numbers = my_fav_numbers | friend_fav_numbers
 print(our_fav_numbers)
 
 # Exercise 3: Print A Range Of Numbers
