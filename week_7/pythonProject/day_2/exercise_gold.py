@@ -69,14 +69,15 @@ import random
 # Use the season as an argument when calling get_random_temp().
 
 def determine_season(month):
-    if 12 <= month < 3:
-        return "winter"
-    elif 3 <= month < 6:
+
+    if 3 <= month < 6:
         return "spring"
     elif 6 <= month < 9:
         return "summer"
     elif 9 <= month < 12:
         return "fall"
+    else:
+        return "winter"
 
 
 def get_random_temp(season):
