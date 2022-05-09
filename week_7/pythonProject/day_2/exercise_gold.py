@@ -92,11 +92,7 @@ def get_random_temp(season):
         return round(random.uniform(-10, 5), 1)
 
 
-def main():
-    get_month = int(input("What is the month? "))
-    get_season = determine_season(get_month)
-    my_temp = get_random_temp(get_season)
-    print(f"The season is {get_season} and the temperature right now is {my_temp} degrees Celsius.")
+def display_message(my_temp):
     if my_temp < 0:
         print("Brrr, that’s freezing! Wear some extra layers today")
     elif 0 <= my_temp < 16:
@@ -107,6 +103,14 @@ def main():
         print("I like summer!")
     else:
         print("Take care, the sun is too strong!")
+
+
+def main():
+    get_month = int(input("What is the month? "))
+    get_season = determine_season(get_month)
+    my_temp = get_random_temp(get_season)
+    print(f"The season is {get_season} and the temperature right now is {my_temp} degrees Celsius.")
+    display_message(my_temp)
 
 
 main()
