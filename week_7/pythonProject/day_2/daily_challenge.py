@@ -11,9 +11,9 @@ matrix = [
     [7, "i", 3],
     ["T", "s", "i"],
     ["h", "%", "x"],
-    ["i", ' ', "#"],
-    ["s", "M", ' '],
-    ["$", "a", ' '],
+    ["i", '', "#"],
+    ["s", "M", ''],
+    ["$", "a", ''],
     ["#", "t", "%"],
     ["^", "r", "!"],
 ]
@@ -25,9 +25,9 @@ def check_letter(x):
     :param x:
     :return: the letter or a white space
     """
-    if 65 <= ord(str(x)) <= 90 or 97 <= ord(str(x)) <= 122:
+    if ('a' <= str(x) and x <= 'z') or ('A' <= str(x) and x <= 'Z'):
         return x
-    elif 48 <= ord(str(x)) <= 57:
+    elif isinstance(x, int):
         return ''
     else:
         return ' '
