@@ -2,20 +2,23 @@
 # as input and prints the words in a comma-separated
 # sequence after sorting them alphabetically.
 
+# Version 1
+def sort_sentence(*args):
+    args_list = list(args)
+    args_list.sort()
+    return ",".join(args_list)
 
-# def sort_sentence(*args):
-#     args_list = [args for ]
-#     args_list.sort()
-#     return args_list
 
-args = "without", "hello", "bag", "world"
-list_args = list(args)
+print(sort_sentence("without", "hello", "bag", "world"))
+
+# Version 2
+arguments = "without", "hello", "bag", "world"
+list_args = list(arguments)
 list_args.sort()
 output = ",".join(list_args)
 print(output)
 
-
-
+# Version 3
 for i in range(len(list_args)):
     for j in range(i + 1, len(list_args)):
 
