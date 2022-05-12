@@ -25,7 +25,7 @@ def check_letter(x):
     :param x:
     :return: the letter or a white space
     """
-    if ('a' <= str(x) and x <= 'z') or ('A' <= str(x) and x <= 'Z'):
+    if ('a' <= str(x) and x <= 'z') or ('A' <= str(x) and x <= 'Z'): # there is no need to convert to str, it already str
         return x
     elif isinstance(x, int):
         return ''
