@@ -48,11 +48,27 @@ def redefine_pos_x(x):
         return 11
 
 
-def player_input(x, y, previous_moves):
+def player_input():
+    input_row = int(input("Enter row: "))
+    input_column = int(input("Enter column: "))
+    while input_column not in [1, 2, 3] or input_row not in [1, 2, 3]:
+        print("Not in board, retry")
+        input_row = int(input("Enter row: "))
+        input_column = int(input("Enter column: "))
+    return input_column, input_row
+
+
+def player_move(x, y, previous_moves):
     board = get_new_board()
     for x, y, p in previous_moves:
         board[redefine_pos_x(x)][redefine_pos_y(y)] = p
     return board
+
+
+def check_if_in_previous_moves(prev, x, y, player):
+    if [x, y, player] in prev:
+        prev.remove([x, y, player])
+        print(f"This move has already been made")
 
 
 def check_win(prev, player):
@@ -68,7 +84,6 @@ def check_win(prev, player):
             [[1, 3, player], [2, 2, player], [3, 1, player]],
             [[1, 2, player], [2, 2, player], [3, 2, player]],
             ]
-
     for item in wins:
         if all(element in list_moves for element in item):
             return True
@@ -79,13 +94,13 @@ def play():
     player = 'X'
     while play_again:
         print(f"Player {player}'s turn...")
-        input_row = int(input("Enter row: "))
-        input_column = int(input("Enter column: "))
-        previous_moves_params.append([input_column, input_row, player])
+        x, y = player_input()
+        check_if_in_previous_moves(previous_moves_params, x, y, player)
+        previous_moves_params.append([x, y, player])
         check = check_win(prev=previous_moves_params, player=player)
-        new_board = player_input(redefine_pos_x(input_column), redefine_pos_y(input_row), previous_moves_params)
+        new_board = player_move(redefine_pos_x(x), redefine_pos_y(y), previous_moves_params)
         draw_board(new_board)
-        print(previous_moves_params)
+        # print(previous_moves_params)
         if check:
             print(f"Player {player} is the winner")
             play_again = False
