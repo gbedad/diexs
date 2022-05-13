@@ -30,9 +30,7 @@ def draw_board(board):
     display_top_bottom()
 
 
-new_board = get_new_board()
 
-draw_board(new_board)
 
 
 def redefine_pos_y(y):
@@ -74,11 +72,13 @@ def check_win(prev, player):
             [[1, 2, player], [2, 2, player], [3, 2, player]],
             ]
 
-    if list_moves in wins:
-        check = True
+    # if list_moves in wins:
+    for item in wins:
+        if all(element in list_moves for element in item):
+        # check = True
         # print(f"Player {player} is the winner")
-        message = f"Player {player} is the winner"
-        return check
+        # message = f"Player {player} is the winner"
+            return True
 
 
 def play():
@@ -90,14 +90,15 @@ def play():
         input_column = int(input("Enter column: "))
         previous_moves_params.append([input_column, input_row, player])
         check = check_win(prev=previous_moves_params, player=player)
-
         new_board = player_input(redefine_pos_x(input_column), redefine_pos_y(input_row), previous_moves_params)
         draw_board(new_board)
-        if check == True:
+        print(previous_moves_params)
+        if check:
             print(f"Player {player} is the winner")
             play_again = False
-        else:
-            print("Tie")
+        elif len(previous_moves_params) >= 9:
+            play_again = False
+            print("No winner in this game, tie")
         if player == 'X':
             player = 'O'
         else:
@@ -107,6 +108,8 @@ def play():
 
 previous_moves_params = []
 player_moves = []
+new_board = get_new_board()
+draw_board(new_board)
 play()
 
 
