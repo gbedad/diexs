@@ -30,9 +30,6 @@ def draw_board(board):
     display_top_bottom()
 
 
-
-
-
 def redefine_pos_y(y):
     if y == 1:
         return 0
@@ -72,12 +69,8 @@ def check_win(prev, player):
             [[1, 2, player], [2, 2, player], [3, 2, player]],
             ]
 
-    # if list_moves in wins:
     for item in wins:
         if all(element in list_moves for element in item):
-        # check = True
-        # print(f"Player {player} is the winner")
-        # message = f"Player {player} is the winner"
             return True
 
 
@@ -103,7 +96,6 @@ def play():
             player = 'O'
         else:
             player = 'X'
-        # print(player)
 
 
 previous_moves_params = []
@@ -112,6 +104,5 @@ new_board = get_new_board()
 draw_board(new_board)
 play()
 
+# TODO check if input in list_moves, reject if yes
 
-def player_input():
-    pass
