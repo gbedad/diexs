@@ -1,4 +1,7 @@
 # Tic Tac Toe game
+import random
+
+
 def get_new_board():
     board = []
     for x in range(15):
@@ -89,9 +92,14 @@ def check_win(prev, player):
             return True
 
 
+def define_random_player():
+    player_to_start = random.choice(["X", "O"])
+    return player_to_start
+
+
 def play():
     play_again = True
-    player = 'X'
+    player = define_random_player()
     while play_again:
         print(f"Player {player}'s turn...")
         x, y = player_input()
