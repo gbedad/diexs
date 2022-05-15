@@ -5,9 +5,9 @@ import random
 def get_new_board():
     board = []
     for x in range(15):
-        board.append([])
+        board.append([]) # rather than appending empty list then append each time, you can create and add to it and just at the end add it to the borad
         for y in range(5):
-            if x == 5 or x == 9:
+            if x == 5 or x == 9: # you can make it more clean by: if x in [5, 9]
                 board[x].append('|')
             elif (x == 5 or x == 9) and (y == 1 or y == 3):
                 board[x].append('|')
@@ -17,7 +17,18 @@ def get_new_board():
                 board[x].append(' ')
     return board
 
+# to create new borad, which a fixed size we can simplify the display by:
+# board = {'7': ' ' , '8': ' ' , '9': ' ' ,
+#             '4': ' ' , '5': ' ' , '6': ' ' ,
+#             '1': ' ' , '2': ' ' , '3': ' ' }
 
+# def get_new_board():
+#     print(board['7'] + '|' + board['8'] + '|' + board['9'])
+#     print('-+-+-')
+#     print(board['4'] + '|' + board['5'] + '|' + board['6'])
+#     print('-+-+-')
+#     print(board['1'] + '|' + board['2'] + '|' + board['3'])
+    
 def display_top_bottom():
     print("*" * 17)
 
@@ -54,7 +65,7 @@ def redefine_pos_x(x):
 def player_input():
     input_row = int(input("Enter row: "))
     input_column = int(input("Enter column: "))
-    while input_column not in [1, 2, 3] or input_row not in [1, 2, 3]:
+    while input_column not in [1, 2, 3] or input_row not in [1, 2, 3]: # rather than creating the input twice you can create flag like ivalid_input which start with true and once you get a vaild input it will be true
         print("Not in board, retry")
         input_row = int(input("Enter row: "))
         input_column = int(input("Enter column: "))
