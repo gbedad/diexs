@@ -20,12 +20,13 @@ matrix = [
 
 
 def check_letter(x):
+    x = str(x)
     """
     Function return the letter or white space
     :param x:
     :return: the letter or a white space
     """
-    if ('a' <= str(x) and x <= 'z') or ('A' <= str(x) and x <= 'Z'):
+    if ('a' <= x <= 'z') or ('A' <= x <= 'Z'):
         return x
     elif isinstance(x, int):
         return ''
