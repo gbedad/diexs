@@ -38,8 +38,8 @@ class BankAccount:
 
 
 class MinimumBalanceAccount(BankAccount):
-    def __init__(self, balance, username, password, authenticated=False, minimum_balance=0):
-        super().__init__(balance, username, password, authenticated=False)
+    def __init__(self, balance, username, password, minimum_balance=0):
+        super().__init__(balance, username, password)
         self.minimum_balance = minimum_balance
         print(self.minimum_balance, self.balance)
 
@@ -83,11 +83,16 @@ class ATM:
     def log_in(self):
         username_input = input("Enter username: ")
         password_input = input("Enter password: ")
-        # BankAccount.authenticate(username=username_input, password=password_input)
-        # if not BankAccount.authenticated:
-        #     raise Exception("You are not authenticated...")
-        # else:
-        #     print("Logged in")
+        new_account = self.account_list[0]
+        test = new_account.authenticate(username=username_input, password=password_input)
+        print(test)
+
+        if not new_account.authenticated:
+            self.current_tries += 1
+            print(f"You are not authenticated...,{self.try_limit - self.current_tries} trials left")
+        else:
+            print("logged in")
+
 
 
 my_account1 = BankAccount(23, "user1", "password1")
@@ -95,7 +100,7 @@ my_account2 = BankAccount(23, "user2", "password2")
 my_account3 = BankAccount(23, "user3", "password3")
 my_account4 = MinimumBalanceAccount(balance=34, minimum_balance=45, username='user4', password='password4')
 my_account5 = 5
-# ba = MinimumBalanceAccount(56)
+
 # my_account.authenticate("username", "password")
 list_accounts = [my_account1, my_account2, my_account3]
 
