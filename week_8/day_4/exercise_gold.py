@@ -83,16 +83,18 @@ class ATM:
     def log_in(self):
         username_input = input("Enter username: ")
         password_input = input("Enter password: ")
-        new_account = self.account_list[0]
-        test = new_account.authenticate(username=username_input, password=password_input)
-        print(test)
+        for i in range(len(self.account_list)):
 
-        if not new_account.authenticated:
-            self.current_tries += 1
-            print(f"You are not authenticated...,{self.try_limit - self.current_tries} trials left")
-        else:
-            print("logged in")
-            self.show_account_menu(new_account)
+            # new_account = self.account_list[0]
+            test = self.account_list[i].authenticate(username=username_input, password=password_input)
+            print(test)
+
+            if not self.account_list[i].authenticated:
+                self.current_tries += 1
+                print(f"You are not authenticated...,{self.try_limit - self.current_tries} trials left")
+            else:
+                print("logged in")
+                self.show_account_menu(self.account_list[i])
 
     def show_account_menu(self, account):
         show_menu = True
@@ -105,26 +107,28 @@ class ATM:
                 show_menu = False
             elif ans == 'D':
                 account.deposit()
+                print(f"Balance\n{account.balance}")
             elif ans == 'W':
                 account.withdraw()
+                print(f"Balance\n-------\n{account.balance}")
 
 
 
 
 my_account1 = BankAccount(23, "user1", "password1")
-my_account2 = BankAccount(23, "user2", "password2")
-my_account3 = BankAccount(23, "user3", "password3")
-my_account4 = MinimumBalanceAccount(balance=34, minimum_balance=45, username='user4', password='password4')
+my_account2 = BankAccount(100, "user2", "password2")
+my_account3 = BankAccount(200, "user3", "password3")
+my_account4 = MinimumBalanceAccount(balance=300, minimum_balance=45, username='user4', password='password4')
 my_account5 = 5
 
 # my_account.authenticate("username", "password")
-list_accounts = [my_account1, my_account2, my_account3]
+list_accounts = [my_account1, my_account2, my_account3, my_account4]
 
 my_atm = ATM(list_accounts, 3)
-print(my_atm.try_limit)
+# print(my_atm.try_limit)
 
 # my_account.deposit()
 # my_account.withdraw()
-print(my_account1.balance)
+# print(my_account1.balance)
 # ba.withdraw()
 # print(ba.balance)
