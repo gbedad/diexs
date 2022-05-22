@@ -66,7 +66,7 @@ class ATM:
         result = isinstance(self.account_list, BankAccount)
         self.current_tries = 0
         self.show_main_menu()
-        print(self.account_list)
+        # print(self.account_list)
         print(result)
 
     def show_main_menu(self):
@@ -81,20 +81,22 @@ class ATM:
             print("Wrong input")
 
     def log_in(self):
-        username_input = input("Enter username: ")
-        password_input = input("Enter password: ")
-        for i in range(len(self.account_list)):
 
-            # new_account = self.account_list[0]
-            test = self.account_list[i].authenticate(username=username_input, password=password_input)
-            print(test)
+        while self.current_tries < self.try_limit:
+            username_input = input("Enter username: ")
+            password_input = input("Enter password: ")
+            for i in range(len(self.account_list)):
 
-            if not self.account_list[i].authenticated:
+                test = self.account_list[i].authenticate(username=username_input, password=password_input)
+                print("Authenticated", test)
+                if test:
+                    print("logged in")
+                    self.show_account_menu(self.account_list[i])
+            else:
                 self.current_tries += 1
                 print(f"You are not authenticated...,{self.try_limit - self.current_tries} trials left")
-            else:
-                print("logged in")
-                self.show_account_menu(self.account_list[i])
+
+
 
     def show_account_menu(self, account):
         show_menu = True
