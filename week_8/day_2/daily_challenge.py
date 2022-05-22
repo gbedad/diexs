@@ -5,7 +5,7 @@ class Farm:
         self.animal_dict = {}
 
     def add_animal(self, animal, number=1):
-        if animal in self.animal_dict.keys():
+        if animal in self.animal_dict.keys(): # here you can do just: if animal in self.animal_dict
             self.animal_dict[animal] += 1
         else:
             self.animal_dict[animal] = number
