@@ -8,7 +8,7 @@ class Card:
         self.cards = []
         self.suit = ('Hearts', 'Diamonds', 'Clubs', 'Spades')
         self.value = ('A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K')
-        for i in range(len(self.value) ):
+        for i in range(len(self.value) ): # you can extract this code to funstion
             for j in range(len(self.suit)):
                 self.cards.append((self.value[i], self.suit[j]))
 
