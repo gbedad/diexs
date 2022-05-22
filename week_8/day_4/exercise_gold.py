@@ -14,27 +14,27 @@ class BankAccount:
         return self.authenticated
 
     def deposit(self):
-        if not self.authenticated:
-            raise Exception("You are not authenticated...")
-        else:
-            input_deposit = int(input("What is your deposit amount: "))
-            if input_deposit <= 0:
-                raise Exception("Amount is not correct")
-            self.balance += input_deposit
-            return self.balance
+        # if not self.authenticated:
+        #     raise Exception("You are not authenticated...")
+        # else:
+        input_deposit = int(input("What is your deposit amount: "))
+        if input_deposit <= 0:
+            raise Exception("Amount is not correct")
+        self.balance += input_deposit
+        return self.balance
 
     def withdraw(self):
-        user = input("enter username: ")
-        psswd = input("Enter your password")
-        self.authenticate(username=user, password=psswd)
-        if not self.authenticated:
-            raise Exception("You are not authenticated...")
-        else:
-            withdrawal = int(input("How much do you want to withdraw: "))
-            if withdrawal <= 0 or withdrawal > self.balance:
-                raise Exception("Insufficient balance or incorrect input")
-            self.balance -= withdrawal
-            return self.balance
+        # user = input("enter username: ")
+        # psswd = input("Enter your password")
+        # self.authenticate(username=user, password=psswd)
+        # if not self.authenticated:
+        #     raise Exception("You are not authenticated...")
+        # else:
+        withdrawal = int(input("How much do you want to withdraw: "))
+        if withdrawal <= 0 or withdrawal > self.balance:
+            raise Exception("Insufficient balance or incorrect input")
+        self.balance -= withdrawal
+        return self.balance
 
 
 class MinimumBalanceAccount(BankAccount):
@@ -92,6 +92,22 @@ class ATM:
             print(f"You are not authenticated...,{self.try_limit - self.current_tries} trials left")
         else:
             print("logged in")
+            self.show_account_menu(new_account)
+
+    def show_account_menu(self, account):
+        show_menu = True
+        while show_menu:
+            print("\n(D)eposit\n(W)ithdrawal\n(E)xit")
+            ans = input("Enter your choice: ")
+            ans = ans.upper()
+            if ans == 'E':
+                print("Bye")
+                show_menu = False
+            elif ans == 'D':
+                account.deposit()
+            elif ans == 'W':
+                account.withdraw()
+
 
 
 
