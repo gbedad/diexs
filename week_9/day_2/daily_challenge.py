@@ -16,31 +16,57 @@ class Circle:
     def compute_area(self):
         return math.pi*self.radius**2
 
-    def print_circle(self):
-        print(f"Circle {self.name} of radius {self.radius} and area {self.compute_area()}")
+    def __str__(self):
+        return f"Circle {self.name} of radius {self.radius} and area {round(self.compute_area(), 1)}"
 
-    def compare_circles(self, b):
-        if self.compute_area() > b.compute_area():
-            return f'The circle {self.name} is bigger than {b.name}'
-        elif self.compute_area() < b.compute_area():
-            return f'The circle {b.name} is bigger than {self.name}'
+    # def compare_circles(self, b):
+    #     if self.compute_area() > b.compute_area():
+    #         return f'The circle {self.name} is bigger than {b.name}'
+    #     elif self.compute_area() < b.compute_area():
+    #         return f'The circle {b.name} is bigger than {self.name}'
+    #     else:
+    #         return f"The circles are equal"
+
+    def __add__(self, other):
+        return f" New circle of radius: {self.radius + other.radius}"
+
+    def __gt__(self, other):
+        if self.radius > other.radius:
+            print(f"{self.name} is bigger than {other.name}")
+            return True
+        elif self.radius < other.radius:
+            print(f"{self.name} is smaller than {other.name}")
+            return
         else:
-            return f"The circles are equal"
+            return f"{self.name} and {other.name} are equal"
 
     @classmethod
-    def add_circles(cls, c):
-        cls.circles.append(c.name)
+    def add_circles_to_list(cls, a, b):
+        cls.circles.append(a.name)
+        cls.circles.append(b.name)
+        print(cls.circles)
+        if a > b:
+            cls.circles[0] = b.name
+            cls.circles[1] = a.name
+        else:
+            cls.circles[0] = a.name
+            cls.circles[1] = b.name
+        return cls.circles
 
 
 my_circle1 = Circle(name='A', radius=30)
-my_circle2 = Circle.from_diameter(name='B', diameter=60)
+my_circle2 = Circle.from_diameter(name='B', diameter=30)
+
+print("add circles", my_circle1 + my_circle2)
+print(str(my_circle2))
+
+print(my_circle1 > my_circle2)
 print(my_circle1.compute_area())
-Circle.add_circles(my_circle1)
-Circle.add_circles(my_circle2)
+print(Circle.add_circles_to_list(my_circle1, my_circle2))
 
 
-print(my_circle1.compare_circles(my_circle2))
-print(Circle.circles)
+# print(my_circle1.compare_circles(my_circle2))
+# print(Circle.circles)
 # my_circle2 = Circle(diameter=60)
 # my_circle2 = Circle.from_diameter(45)
 
