@@ -51,11 +51,15 @@ class Currency:
 
     def __add__(self, other):
         if isinstance(other, Currency):
+            if self.name != other.name:
+                raise TypeError(f"Cannot add between Currency type {self.name} and {other.name}")
             return self.value + other.value if self.name == other.name else f"Cannot add between Currency type {self.name} and {other.name}"
         return f"{self.value + other} {self.name}s"
 
     def __iadd__(self, other):
         if isinstance(other, Currency):
+            if self.name != other.name:
+                raise TypeError(f"Cannot add between Currency type {self.name} and {other.name}")
             return f"{self.value + other.value} {self.name}s" if self.name == other.name else f"Cannot add between Currency type {self.name} and {other.name}"
         return f"{self.value + other} {self.name}s"
 
@@ -64,7 +68,7 @@ c1 = Currency('dollar', 5)
 c2 = Currency('dollar', 10)
 c3 = Currency('shekel', 1)
 c4 = Currency('shekel', 10)
-
+print(c1)
 print(str(c4))
 
 print(int(c1))
@@ -72,8 +76,12 @@ print(int(c1))
 print(c1 + c2)
 print(c1 + 11.89)
 
-c1 += c2
+c3 += c4
 print(str(c1))
 
 c4 += 37
 print(str(c4))
+
+print(c1)
+
+help(print)
