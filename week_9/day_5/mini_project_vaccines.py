@@ -8,8 +8,12 @@ class Human:
         self.family = []
 
     def add_family_member(self, person):
+
         if person.id not in self.family:
             self.family.append(person)
+            person.family.append(self)
+        else:
+            raise TypeError("Already a family member...")
 
 
 class Queue:
@@ -69,9 +73,6 @@ class Queue:
         return self.humans
 
 
-
-
-
 bob = Human(id_number=23, name="Bob", age=23, blood_type="AB", priority=True)
 tom = Human(id_number=24, name="Tom", age=61, blood_type="O")
 rex = Human(id_number=25, name="Rex", age=67, blood_type="A")
@@ -82,7 +83,8 @@ victor.add_family_member(rex)
 # victor.add_family_member(tom)
 tom.add_family_member(rex)
 victor.add_family_member(bob)
-
+alice.add_family_member(bob)
+victor.add_family_member(bob)
 
 
 print(victor.family[0].name)
@@ -125,4 +127,7 @@ queue.rearrange_queue()
 
 for h in queue.humans:
     print(h.name, h.age)
+
+print(victor.family[0].name)
+print(rex.family[0].name)
 
