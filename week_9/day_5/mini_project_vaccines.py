@@ -48,7 +48,7 @@ class Queue:
             next_in_queue = self.humans[0]
             self.humans.remove(next_in_queue)
             return next_in_queue.id
-        else:
+        else: # it's redundant you can remove it
             return None
 
     def get_next_blood_type(self, blood_type):
@@ -59,7 +59,7 @@ class Queue:
         else:
             if blood_type not in ["A", "B", "AB", "O"]:
                 raise ValueError("Blood type doesn't exist")
-            return None
+            return None # it's redundant you can remove it
 
     def sort_by_age(self):
         self.humans.sort(key=lambda x: (x.priority, x.age), reverse=True)
