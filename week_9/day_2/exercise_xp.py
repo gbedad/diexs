@@ -7,7 +7,7 @@
 # which explains the execution of your code. Take a look at the
 # doc method on google for help.
 
-def fake_abs(num):
+def fake_abs(num): # you can do it in just single line by: return (-1) * num if num < 0 else num
     if num < 0:
         return (-1) * num
     return num
@@ -20,7 +20,7 @@ def fake_int(num):
     if isinstance(num, float):
         return round(num)
     elif isinstance(num, str):
-        num_to_number = num * 1
+        num_to_number = num * 1 # return in one line like: return num * 1 also rather then multiple by 1 just do casting
         return num_to_number
     return num
 
@@ -42,7 +42,7 @@ class Currency:
     def __str__(self):
         if self.value == 1:
             return f"{self.value} {self.name}"
-        return f"{self.value} {self.name}s"
+        return f"{self.value} {self.name}s" # you can do in a single line, remeber inside the {} we can run python code, think how to do it :)
 
     def __repr__(self):
         if self.value == 1:
