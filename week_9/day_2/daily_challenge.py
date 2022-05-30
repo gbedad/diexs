@@ -30,7 +30,7 @@ class Circle:
     def __add__(self, other):
         return f" New circle of radius: {self.radius + other.radius}"
 
-    def __gt__(self, other):
+    def __gt__(self, other): # at the ge you must return boolean
         if self.radius > other.radius:
             print(f"{self.name} is bigger than {other.name}")
             return True
@@ -41,7 +41,7 @@ class Circle:
             return f"{self.name} and {other.name} are equal"
 
     @classmethod
-    def add_circles_to_list(cls, a, b):
+    def add_circles_to_list(cls, a, b): # think for a better solution
         cls.circles.append(a.name)
         cls.circles.append(b.name)
         print(cls.circles)
