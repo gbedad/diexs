@@ -15,8 +15,9 @@ user_name = input("\nEnter your fullname as Name Lastname: ")
 
 
 def check_name_validity(name):
-
-    pattern = re.match(r'^[A-Z][a-z]\^[A-Z][a-z]', name)
+    reg = r"^[A-Z][a-z]+\s[A-Z][a-z]+$"
+    pattern = re.compile(reg)
+    pattern = re.match(pattern, name)
     if pattern:
         return True
     else:
@@ -65,11 +66,11 @@ def main(a):
 # print(test)
 
 # print(test_password(password=test))/
-
-for i in range(100):
-    for j in range(6, 31):
-        test = main(j)
-        print(test)
-        print(test_password(test))
+#
+# for i in range(100):
+#     for j in range(6, 31):
+#         test = main(j)
+#         print(test)
+#         print(test_password(test))
 
 
