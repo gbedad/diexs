@@ -50,9 +50,8 @@ class TextModification(Text):
         # print(text_list)
         filtered_text = [word for word in text_list if word.lower() not in stop_words]
 
-        print(filtered_text)
-        # print("Text without stop words: ", " ".join(text_list))
-        return self.text
+        print("Text without stop words: ", " ".join(filtered_text))
+        return filtered_text
 
 
 
