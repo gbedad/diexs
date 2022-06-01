@@ -1,8 +1,6 @@
 # Text analysis
 from collections import Counter
 import re
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
 
 
 class Text:
@@ -43,15 +41,21 @@ class TextModification(Text):
     def remove_punctuation(self):
         pattern = r'[^\w\s]'
         new_text = re.sub(pattern, '', self.text)
-        print(new_text)
+        # print(new_text)
         return new_text
 
     def remove_stop_words(self):
-        stop_words = set(stopwords.words('english'))
+        stop_words = ['ourselves', 'hers', 'between', 'yourself', 'but', 'again', 'there', 'about', 'once', 'during', 'out', 'very', 'having', 'with', 'they', 'own', 'an', 'be', 'some', 'for', 'do', 'its', 'yours', 'such', 'into', 'of', 'most', 'itself', 'other', 'off', 'is', 's', 'am', 'or', 'who', 'as', 'from', 'him', 'each', 'the', 'themselves', 'until', 'below', 'are', 'we', 'these', 'your', 'his', 'through', 'don', 'nor', 'me', 'were', 'her', 'more', 'himself', 'this', 'down', 'should', 'our', 'their', 'while', 'above', 'both', 'up', 'to', 'ours', 'had', 'she', 'all', 'no', 'when', 'at', 'any', 'before', 'them', 'same', 'and', 'been', 'have', 'in', 'will', 'on', 'does', 'yourselves', 'then', 'that', 'because', 'what', 'over', 'why', 'so', 'can', 'did', 'not', 'now', 'under', 'he', 'you', 'herself', 'has', 'just', 'where', 'too', 'only', 'myself', 'which', 'those', 'i', 'after', 'few', 'whom', 't', 'being', 'if', 'theirs', 'my', 'against', 'a', 'by', 'doing', 'it', 'how', 'further', 'was', 'here', 'than']
+        text_list = self.text.split()
+        # print(text_list)
+        filtered_text = [word for word in text_list if word.lower() not in stop_words]
 
-        word_tokens = word_tokenize(self.text.lower())
-        filtered_sentence = [w for w in word_tokens if w not in stop_words]
-        print("Text without stop words:", " ".join(filtered_sentence))
+        print(filtered_text)
+        # print("Text without stop words: ", " ".join(text_list))
+        return self.text
+
+
+
 
 
 
@@ -67,7 +71,7 @@ class TextModification(Text):
 # the_stranger.unique_words()
 
 the_stranger1 = TextModification.from_file('the_stranger.txt')
-the_stranger1.remove_punctuation()
+# the_stranger1.remove_punctuation()
 # the_stranger1.remove_punctuation()
 # print(the_stranger1.text)
 the_stranger1.remove_stop_words()
