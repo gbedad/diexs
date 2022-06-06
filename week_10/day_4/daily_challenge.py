@@ -12,7 +12,7 @@ class Text:
     def word_frequency(self, word):
         if word in self.freq.keys():
             return self.freq[word]
-        else:
+        else: # it's reduyndant it will return none by default
             return None
 
     def most_common_word(self):
