@@ -1,0 +1,20 @@
+{% extends "homepage.html" %}
+
+{% block title %}
+Blue
+{% endblock %}
+
+{% block style %}
+    .blue {
+        background-color: blue
+    }
+{% endblock %}
+
+
+
+{% block body %}
+{{ super() }}
+    <div class="color blue">
+hello
+    </div>
+{% endblock %}
