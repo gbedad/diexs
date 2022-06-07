@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link href="./static/style.css", rel="stylesheet">
+</head>
+<body>
+<div class="tab">
+    <a href={{ url_for('func_chapter') }}> Chapter </a>
+    <a href={{ url_for('func_exercises') }}> Exercises </a>
+</div>
+
+<!--Content-->
+
+{% if url_for('func_chapter')%}
+<div id="chapter" class="tabcontent">
+   {{mkd_text|markdown}}
+</div>
+{% elif url_for('func_exercises')%}
+<div id="exercise" class="tabcontent">
+   {{mkd_text|markdown}}
+</div>
+{%endif%}
+
+
+</body>
+</html>
