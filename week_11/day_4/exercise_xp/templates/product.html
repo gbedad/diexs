@@ -1,0 +1,29 @@
+{% extends 'homepage.html' %}
+
+{% block my_block %}
+    <div class="product">
+        {% if product == None %}
+        <h3>Product not found</h3>
+        {% else %}
+        <h3>{{ product['Name'] }}</h3>
+        <h4>Product Details</h4>
+        <p><span>ProductId</span> {{ product['ProductId'] }}</p>
+        <p>Category {{ product['Category'] }}</p>
+        <p>MainCategory {{ product['MainCategory'] }}</p>
+        <p>TaxTarifCode {{ product['TaxTarifCode'] }}</p>
+        <p>SupplierName {{ product['SupplierName'] }}</p>
+        <p>WeightMeasure {{ product['WeightMeasure'] }}</p>
+        <p>WeightUnit {{ product['WeightUnit'] }}</p>
+        <p>Description {{ product['Description'] }}</p>
+        <p>Name {{ product['Name'] }}</p>
+        <p>ProductPicUrl {{ product['ProductPicUrl'] }}</p>
+        <p>Status {{ product['Status'] }}</p>
+        <p>Quantity {{ product['Quantity'] }}</p>
+        {% endif %}
+<!--        {% if product['remains'] %}-->
+<!--        <button class="buy-button" type="button">Buy !</button>-->
+<!--        {% else %}-->
+<!--        <button class="buy-button" type="button" disabled>Buy !</button>-->
+<!--        {% endif %}-->
+    </div>
+{% endblock %}
