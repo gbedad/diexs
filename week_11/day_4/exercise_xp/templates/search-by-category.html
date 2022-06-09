@@ -1,0 +1,29 @@
+{% extends 'homepage.html' %}
+
+{% block big_title %}
+Tech Market Products
+{% endblock %}
+{% block h4_title %}
+Browse our extensive range of tech products
+{% endblock %}
+
+{% block my_block %}
+    <ul class="products-list">
+        {% for product in products %}
+        <li class="product">
+            <h4>{{ product['Name'] }}</h4>
+            <h4>{{ product['ProductId'] }}</h4>
+            <p>{{ product['Description'] }}</p>
+            <p>Price: {{ product['Price'] }} EUR</p>
+            {% if product['remains'] %}
+            <button class="buy-button" type="button">More Details</button>
+            {% else %}
+            <a href='products/{{product['ProductId']}}'>More Details</a>
+            <button class="buy-button" type="button" disabled>More Details</button>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+
