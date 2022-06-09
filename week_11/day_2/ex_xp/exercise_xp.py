@@ -8,7 +8,7 @@ app = flask.Flask(__name__)
 @app.route('/')
 def cv():
     html = render_template('./index.html')
-    return html
+    return html # redandant var
 
 
 if __name__ == "__main__":
