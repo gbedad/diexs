@@ -3,19 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet", href={{url_for('static', filename="style.css")}}>
 </head>
 <body>
 <navbar>
     <nav>
-        <span>Tech Market</span>
         <ul>
-            <li>Home</li>
-            <li>Our products</li>
+            <li class="tech-market">Tech Market</li>
+            <a class="menu" href={{url_for('home_page')}}><li>Home</li></a>
+            <a class="menu" href={{url_for('products_page')}}><li>Our products</li></a>
             <li>Contact</li>
         </ul>
     </nav>
+    <div class="search">
+        <input type="text" placeholder="search"/>
+        <input type="submit"  value="search"/>
+    </div>
 </navbar>
+    <h1>
+        {% block big_title %}
+        Welcome to Tech Market
+        {% endblock %}
+    </h1>
+    <h4>
+        {% block h4_title %}
+        The fastest growing online retailer in the west
+        {% endblock %}
+    </h4>
     {% block my_block %}
+    <h3>About</h3>
+    <p>We provide a wide range of tech products and accessories for our  clients all over the world</p>
+    <ul>
+        <li>Laptops</li>
+        <li>Computers</li>
+        <li>Phones</li>
+        <li></li>
+        <li></li>
+    </ul>
+<a href='/products'>Check Out Our Products</a>
     {% endblock %}
 
 </body>

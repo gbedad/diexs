@@ -1,11 +1,21 @@
 {% extends 'homepage.html' %}
 
+{% block big_title %}
+{{product['Name']}}
+{% endblock %}
+{% block h4_title %}
+{% if product['Quantity'] != 0 %}
+    This product is currently available. Order while stock last!
+{% else %}
+    Sorry - this product is out of stock
+{% endif %}
+{% endblock %}
+
 {% block my_block %}
     <div class="product">
         {% if product == None %}
         <h3>Product not found</h3>
         {% else %}
-        <h3>{{ product['Name'] }}</h3>
         <h4>Product Details</h4>
         <p><span>ProductId</span> {{ product['ProductId'] }}</p>
         <p>Category {{ product['Category'] }}</p>
