@@ -11,7 +11,7 @@ def func_chapter():
     with open('./lesson1/in-this-chapter.md', 'r') as f:
         mkd_text = f.read()
 
-    html = render_template("./index.html", mkd_text=mkd_text)
+    html = render_template("./index.html", mkd_text=mkd_text) # the var is redandant
     return html
 
 
@@ -21,7 +21,7 @@ def func_exercises():
         mkd_text = f.read()
 
     html = render_template("./index.html", mkd_text=mkd_text)
-    return html
+    return html # the same the var is redundant
 
 
 if __name__ == "__main__":
