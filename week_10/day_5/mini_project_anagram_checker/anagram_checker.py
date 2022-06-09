@@ -4,12 +4,12 @@ import itertools
 class AnagramChecker:
     def __init__(self):
         with open('words.txt', 'r') as f:
-            self.lines = f.readlines()
+            self.lines = f.readlines() # define it twice, remove it and replace
             self.lines = [line.strip("\n") for line in self.lines]
 
     def is_valid_word(self, word):
         if word.upper() in self.lines:
-            return True
+            return True # replace with return word.upper() in self.lines
         else:
             return False
 
@@ -30,7 +30,7 @@ class AnagramChecker:
     def is_anagram(word1, word2):
         if sorted(list(word1)) == sorted(list(word2)):
             print(sorted(list(word1)) == sorted(list(word2)))
-            return True
+            return True # the same here make it one line
         else:
             return False
 
