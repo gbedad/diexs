@@ -8,7 +8,7 @@ def home():
     return render_template('homepage.html')
 
 
-@app.route('/<string:page_color>')
+@app.route('/<string:page_color>') # as we menthened at the class string by default its string
 def color(page_color):
     return render_template(page_color)
 
