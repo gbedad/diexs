@@ -1,9 +1,13 @@
-from flask import Flask, url_for, render_template, redirect
+from flask import Flask, url_for, render_template, redirect, flash
+from forms import RegistrationForm, LoginForm
+from flask_bootstrap import Bootstrap
 
-import products_data
-import cart_manager
+import products_data, cart_manager, user_data
+
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = '8147d28eecb58f4b7f34e1f1f1b00fc0'
+Bootstrap(app)
 
 
 cart_item =[]
@@ -12,6 +16,32 @@ cart_item =[]
 @app.route('/')
 def home():
     return render_template('homepage.html')
+
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        new_user = {"Username": form.username.data, "Password": form.password.data}
+        print(new_user)
+        user_data.add_user(new_user=new_user)
+        flash(f"Account created from {form.username.data}", 'success')
+        return redirect(url_for('home'))
+    # username = input("Enter username: ")
+    # password = input("Enter password: ")
+
+    return render_template('signup.html', form=form, title='Sign Up')
+
+
+@app.route('/login')
+def login():
+    form = LoginForm()
+    username = input("Enter username: ")
+    password = input("Enter password: ")
+    check_user = user_data.check_user(user=username, password=password)
+    if not check_user:
+        return redirect(url_for('signup'))
+    return render_template('login.html', form=form, title="Login")
 
 
 @app.route('/products')

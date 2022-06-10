@@ -1,17 +1,7 @@
 [
   {
-    "ProductId": "HT-1000",
-    "Name": "Notebook Basic 15",
-    "Price": 956
-  },
-  {
-    "ProductId": "HT-1003",
-    "Name": "Notebook Basic 19",
-    "Price": 1650
-  },
-  {
-    "ProductId": "HT-1020",
-    "Name": "ITelO Vault Net",
-    "Price": 459
+    "ProductId": "HT-1001",
+    "Name": "Notebook Basic 17",
+    "Price": 1249
   }
 ]
