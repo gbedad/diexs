@@ -1,13 +1,11 @@
 from flask import Flask, url_for, render_template, redirect, flash
 from forms import RegistrationForm, LoginForm
-from flask_bootstrap import Bootstrap
 
 import products_data, cart_manager, user_data
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8147d28eecb58f4b7f34e1f1f1b00fc0'
-Bootstrap(app)
 
 
 cart_item =[]
@@ -33,14 +31,16 @@ def signup():
     return render_template('signup.html', form=form, title='Sign Up')
 
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
-    username = input("Enter username: ")
-    password = input("Enter password: ")
-    check_user = user_data.check_user(user=username, password=password)
-    if not check_user:
-        return redirect(url_for('signup'))
+    if form.validate_on_submit():
+        check_user = user_data.check_user(user=form.username.data, password=form.password.data)
+        flash(f"Account created from {form.username.data}", 'Login successful')
+        if not check_user:
+            return redirect(url_for('signup'))
+        else:
+            return redirect(url_for('products'))
     return render_template('login.html', form=form, title="Login")
 
 
