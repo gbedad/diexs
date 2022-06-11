@@ -1,24 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Products Page</title>
-</head>
-<body>
+{% extends 'homepage.html' %}
+
+{% block content %}
+
 {% for product in products %}
-<!--<p>Product Name : {{product["Name"]}}</p>-->
-<img src="{{url_for('static', filename=product["ProductPicUrl"])}} " width=180px/>
-<br>
-<p>Product ID : {{product["ProductId"]}}</p>
-<!--<p>Product Category : {{product["Category"]}}</p>-->
-<p>Product Price : {{product["Price"]}} EUR.</p>
-<!--<p>Quantity at Stock : {{product["Quantity"]}}</p>-->
-<a href="{{url_for('product', product_id=product["ProductId"])}}">Info</a>
-<br>
-<a href="{{url_for('add_to_cart', product_id=product["ProductId"])}}">ADD TO CART</a>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+<div class="card  h-100">
+  <img src="{{url_for('static', filename=product["ProductPicUrl"])}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{product["Name"]}}</h5>
+    <p class="card-text">{{product["Description"]}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Product ID : {{product["ProductId"]}}</li>
+    <li class="list-group-item">Product Price : {{product["Price"]}} EUR.</li>
+  </ul>
+  <div class="card-footer">
+    <a href="{{url_for('product', product_id=product["ProductId"])}}" class="card-link">Info</a>
+    <a href="{{url_for('add_to_cart', product_id=product["ProductId"])}}" class="card-link">Add to Cart</a>
+  </div>
+</div>
+  </div>
+  </div>
 {% endfor %}
 
-
-
-</body>
-</html>
+{% endblock %}

@@ -1,20 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Cart</title>
-</head>
-<body>
-<h2>My Cart</h2>
 
-{% for item in cart %}
 
-    <p>Item : {{item["Name"]}}    €{{item["Price"]}}</p>
-    <a href="/delete_product_from_cart/{{item["ProductId"]}}">Remove Item</a>
+{% extends 'homepage.html' %}
+{% block content %}
+
+<div class="card" style="width: 30rem;">
+  <div class="card-body">
+    <h5 class="card-title">My Shopping Cart</h5>
+    <p class="card-text">Confirm when done.</p>
+  </div>
+  <ul class="list-group list-group-flush">
+      {% for item in cart %}
+    <li class="list-group-item">{{item["Name"]}}    €{{item["Price"]}} <a href="/delete_product_from_cart/{{item["ProductId"]}}">Remove Item</a></li>
+
 {% endfor %}
-    <p>Total: €{{total}}</p>
-<a href="{{url_for('products')}}">Continue Shopping</a>
-<a href="{{url_for('save_cart')}}">Confirm Cart</a>
+  </ul>
+    <div class="card-body">
+        <p>Total: €{{total}}</p>
+    </div>
+  <div class="card-footer">
+    <a href="{{url_for('products')}}" class="card-link">Continue Shopping</a>
+    <a href="{{url_for('save_cart')}}" class="card-link">Confirm Cart</a>
+  </div>
+</div>
 
-</body>
-</html>
+{% endblock %}

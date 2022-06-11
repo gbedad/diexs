@@ -1,11 +1,15 @@
-from flask import Flask, url_for, render_template, redirect, flash
+from flask import Flask, url_for, render_template, redirect, flash, request, session
 from forms import RegistrationForm, LoginForm
+from flask_session import Session
 
 import products_data, cart_manager, user_data
 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8147d28eecb58f4b7f34e1f1f1b00fc0'
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 
 
 cart_item =[]
@@ -13,6 +17,8 @@ cart_item =[]
 
 @app.route('/')
 def home():
+    if not session.get("name"):
+        return redirect("/login")
     return render_template('homepage.html')
 
 
@@ -40,8 +46,17 @@ def login():
         if not check_user:
             return redirect(url_for('signup'))
         else:
-            return redirect(url_for('products'))
+            if request.method == "POST":
+                session["name"] = request.form.get("name")
+                print(session["name"])
+                return redirect(url_for('products'))
     return render_template('login.html', form=form, title="Login")
+
+
+@app.route("/logout")
+def logout():
+    session["name"] = None
+    return redirect("/")
 
 
 @app.route('/products')
@@ -75,13 +90,15 @@ def add_to_cart(product_id):
     cart_item.append(added_product)
     print(cart_item)
     # cart_manager.save_cart_to_json(cart_item)
-    return redirect(url_for('cart', cart=cart_item))
+    return redirect(url_for('products'))
 
 
 @app.route('/delete_product_from_cart/<product_id>')
 def delete_from_cart(product_id):
-    deleted_item = list(products_data.retrieve_requested_product(product_id))[0]
-    cart_item.remove(deleted_item)
+    for item in cart_item:
+        if item["ProductId"] == product_id:
+            deleted_item = item
+            cart_item.remove(deleted_item)
     print(cart_item)
     # cart_manager.save_cart_to_json(cart_item)
     return redirect(url_for('cart', cart=cart_item))

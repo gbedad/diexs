@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Product</title>
-</head>
-<body>
-{% for key in product.keys() %}
-<p>{{key}} : {{product[key]}}</p>
-{% endfor %}
 
-<a href="{{url_for('add_to_cart', product_id=product["ProductId"])}}">ADD TO CART</a>
+{% extends 'homepage.html' %}
+{% block content %}
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+      {{product["Name"]}}
+  </div>
+  <ul class="list-group list-group-flush">
+      {% for key in product.keys() %}
+    <li>{{key}} : {{product[key]}}</li>
+        {% endfor %}
+  </ul>
+    <div class="card-footer">
+    <a href="{{url_for('add_to_cart', product_id=product["ProductId"])}}">ADD TO CART</a>
+  </div>
+</div>
 
-</body>
-</html>
+{% endblock %}
