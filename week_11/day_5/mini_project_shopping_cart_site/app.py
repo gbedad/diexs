@@ -6,7 +6,7 @@ import products_data, cart_manager, user_data
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8147d28eecb58f4b7f34e1f1f1b00fc0'
+app.config['SECRET_KEY'] = '8147d28eecb58f4b7f34e1f1f1b00fc0' # the best practice is to put the values as enviroment variables
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
