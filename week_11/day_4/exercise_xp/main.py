@@ -39,7 +39,7 @@ def product_page(product_id):
     return render_template("product.html", product=product)
 
 
-@app.route('/products/search/by-category/<string:category_name>')
+@app.route('/products/search/by-category/<string:category_name>') # as we menthened this string is redundant
 def search_by_category(category_name):
     data = database_manager.load_database()
     filtered = filter(lambda x: x["Category"] == category_name, data)
