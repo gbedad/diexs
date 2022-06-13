@@ -6,24 +6,30 @@
     <title>Cities</title>
 </head>
 <body>
-<form method="POST">
-        {{ form.hidden_tag() }}
+<h1 class="text-center mb-5">City Manager</h1>
 
-        {{ form.city_name.label }}
-        {{ form.city_name(size=32) }}
+<div class="container">
 
-        {{ form.country_name.label }}
-        {{ form.country_name(size=32) }}
 
-        {{ form.number_inhabitants.label }}
-        {{ form.number_inhabitants() }}
+    <form method="POST">
+            {{ form.hidden_tag() }}
 
-        {{ form.city_area.label }}
-        {{ form.city_area() }}
-        {{ form.add_city() }}
+            {{ form.city_name.label(class="form-label") }}
+            {{ form.city_name(size=32, class="form-control mb-3") }}
 
-</form>
+            {{ form.country_name.label(class="form-label") }}
+            {{ form.country_name(size=32, class="form-control mb-4") }}
 
+            {{ form.number_inhabitants.label(class="form-label") }}
+            {{ form.number_inhabitants(class="form-control mb-3") }}
+
+            {{ form.city_area.label(class="form-label") }}
+            {{ form.city_area(class="form-control mb-4") }}
+            {{ form.add_city(class="btn btn-info") }}
+
+    </form>
+
+</div>
 
 
 
