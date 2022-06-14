@@ -1,14 +1,20 @@
 [
   {
-    "City": "Paris",
-    "Country": "France",
-    "Population": 893773,
-    "Surface": 26638
+    "City": "Tokyo",
+    "Country": "Japan",
+    "Population": 8,
+    "Surface": 9
   },
   {
-    "City": "London",
-    "Country": "Uk",
-    "Population": 120000,
-    "Surface": 78933
+    "City": "Paris",
+    "Country": "France",
+    "Population": 6,
+    "Surface": 9
+  },
+  {
+    "City": "Washington",
+    "Country": "USA",
+    "Population": 34,
+    "Surface": 54
   }
 ]

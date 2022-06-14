@@ -1,9 +1,12 @@
 import json
 
 
-def save_city_to_json(city):
-    json_file = 'app_city/cities_around_the_world.json'
-    with open(json_file, 'w+') as file_obj:
-        json.dump(city, file_obj, indent=2)
-    return json_file
+def save_city_to_json(city, filename='app_city/cities_around_the_world.json'):
+    with open(filename, 'r+') as file_obj:
+        file_data = json.load(file_obj)
+        assert isinstance(file_data, object)
+        file_data.append(city)
+        file_obj.seek(0)
+        json.dump(file_data, file_obj, indent=2)
+
 
