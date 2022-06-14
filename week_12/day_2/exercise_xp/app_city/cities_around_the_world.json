@@ -34,5 +34,43 @@
     "Latitude": 14.65433,
     "Longitude": 7.89883893,
     "Capital": false
+  },
+  {
+    "City": "Madrid",
+    "Country": "Spain",
+    "Population": 34432,
+    "Surface": 7838,
+    "Latitude": 2.5664,
+    "Longitude": 47.322111,
+    "Capital": true
+  },
+  {
+    "City": "Tel Aviv",
+    "Country": "Israel",
+    "Population": 3362,
+    "Surface": 387278,
+    "Latitude": 0.45555,
+    "Longitude": 37.991991,
+    "Capital": false
+  },
+  {
+    "City": "Brussels",
+    "Country": "Belgium",
+    "Population": 5322,
+    "Surface": 332,
+    "Latitude": 2.3334,
+    "Longitude": 37.5432,
+    "Capital": true,
+    "Picture": ""
+  },
+  {
+    "City": "Rome",
+    "Country": "Italy",
+    "Population": 43627,
+    "Surface": 839893,
+    "Latitude": 11.455,
+    "Longitude": 98.7777,
+    "Capital": true,
+    "Picture": "Comparaison Lut IFQP.jpeg"
   }
 ]

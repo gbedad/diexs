@@ -22,6 +22,7 @@ class AddCity(flask_wtf.FlaskForm):
     latitude = wtforms.FloatField("Latitude")
     longitude = wtforms.FloatField("Longitude")
     is_capital = wtforms.BooleanField("Capital", false_values=(False, 'false', 0, '0'))
+    picture = wtforms.FileField("Image")
     add_city = wtforms.SubmitField("Add City")
 
 
