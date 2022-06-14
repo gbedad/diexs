@@ -16,5 +16,23 @@
     "Country": "USA",
     "Population": 34,
     "Surface": 54
+  },
+  {
+    "City": "Tunis",
+    "Country": "Tunisia",
+    "Population": 48734,
+    "Surface": 473787,
+    "Latitude": 11.455,
+    "Longitude": 37.5432,
+    "Capital": true
+  },
+  {
+    "City": "Brasilia",
+    "Country": "Brasil",
+    "Population": 74837,
+    "Surface": 773828,
+    "Latitude": 14.65433,
+    "Longitude": 7.89883893,
+    "Capital": false
   }
 ]

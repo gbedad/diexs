@@ -39,7 +39,7 @@ def index():
         print(f"inhabitants: {number_inhabitants}")
         print(f"area: {city_area}")
 
-        return flask.redirect(url_for('index'))
+        return flask.redirect(url_for('home'))
 
     return flask.render_template("index.html", form=form)
 

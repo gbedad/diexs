@@ -21,7 +21,7 @@ class AddCity(flask_wtf.FlaskForm):
     city_area = wtforms.IntegerField("City area")
     latitude = wtforms.FloatField("Latitude")
     longitude = wtforms.FloatField("Longitude")
-    is_capital = wtforms.BooleanField("Capital", default=False)
+    is_capital = wtforms.BooleanField("Capital", false_values=(False, 'false', 0, '0'))
     add_city = wtforms.SubmitField("Add City")
 
 
