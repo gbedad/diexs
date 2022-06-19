@@ -10,7 +10,7 @@ import json
 
 
 from app_city import web_app, city_manager
-file_cities = 'app_city/cities_around_the_world.json'
+file_cities = 'app_city/cities_around_the_world.json' # the best practice for const vars to be all in upper case
 file_size = os.path.getsize(file_cities)
 
 with open(file_cities, 'r+') as file_obj:
