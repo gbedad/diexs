@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<h1>Users</h1>
+<div>
+    <h3>All users</h3>
+{% for user in users %}
+<p>{{user.name}}, {{user.street}}, {{user.city}}, {{user.zipcode}}</p>
+{% endfor %}
+</div>
+<br>
+<div>
+    <h3>User with city = 'Roscoeview'</h3>
+    {{specific_user.name}}
+
+</div>
+<div>
+    <br>
+    <h3>First 5 users</h3>
+   {% for user in first_5 %}
+<p>{{user.name}}, {{user.street}}, {{user.city}}, {{user.zipcode}}</p>
+{% endfor %}
+</div>
+<div>
+    <br>
+    <h3>Users with zipcode starting with 5</h3>
+   {% for user in start_with_5 %}
+<p>{{user.name}}, {{user.street}}, {{user.city}}, {{user.zipcode}}</p>
+{% endfor %}
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add User</title>
+</head>
+<body>
+<h1>Add User</h1>
+<form method="POST">
+{{ form.hidden_tag() }}
+
+{{ form.user_name.label }}
+{{ form.user_name(size=64) }}
+
+{{ form.street.label }}
+{{ form.street(size=120) }}
+
+{{ form.city.label }}
+{{ form.city(size=64) }}
+
+{{ form.zipcode.label }}
+{{ form.zipcode(size=15) }}
+
+{{ form.submit() }}
+</form>
+
+</body>
+</html>

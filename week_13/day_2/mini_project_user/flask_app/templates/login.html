@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h1>Login Form</h1>
+<form method="POST">
+{{ form.hidden_tag() }}
+
+{{ form.name.label }}
+{{ form.name(size=64) }}
+
+{{ form.city.label }}
+{{ form.city(size=64) }}
+
+{{ form.submit() }}
+</form>
+
+
+</body>
+</html>
