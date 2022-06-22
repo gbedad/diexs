@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, flash
 from flask_app import robots_app, db
 from flask_app.models import User
 from flask_app.forms import AddUser, Login
@@ -24,9 +24,11 @@ def login():
         user = User.query.filter((User.name == name) & (User.city == city)).first()
         print(user)
         if user is not None:
-            return redirect('/')
+            flash('You are successfully logged in', "success")
+            return redirect(url_for('show_users'))
         else:
-            return redirect('/add_user')
+            flash("User doesn't exit, create one.", "error")
+            return redirect(url_for('add_user'))
     return render_template('login.html', form=login_form)
 
 

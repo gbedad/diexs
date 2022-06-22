@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
+{% extends 'layout.html' %}
+{% block body %}
 <h1>Login Form</h1>
 <form method="POST">
 {{ form.hidden_tag() }}
-
+    {% for category, message in get_flashed_messages(with_categories=True) %}
+      <div class="alert-{{category}}">Error: {{ message }}</div>
+    {% endfor %}
 {{ form.name.label }}
 {{ form.name(size=64) }}
 
@@ -17,7 +14,4 @@
 
 {{ form.submit() }}
 </form>
-
-
-</body>
-</html>
+{% endblock %}
