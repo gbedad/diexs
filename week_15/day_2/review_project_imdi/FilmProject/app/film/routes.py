@@ -7,7 +7,7 @@ from app.film.models import *
 film = Blueprint('film', __name__, template_folder='templates', url_prefix='/films')
 
 
-@film.route('/add_film', methods=['GET', 'POST'])
+@film.route('/addFilm', methods=['GET', 'POST'])
 def add_film():
 
     form = AddFilmForm()
@@ -15,10 +15,10 @@ def add_film():
     if form.validate_on_submit():
         return redirect('homepage.html')
 
-    return render_template('/film/addFilm.html', title='Add Film', form=form)
+    return render_template('addFilm.html', title='Add Film', form=form)
 
 
-@film.route('/add_director', methods=['GET', 'POST'])
+@film.route('/addDirector', methods=['GET', 'POST'])
 def add_director():
     form = AddDirectorForm()
 
@@ -29,7 +29,7 @@ def add_director():
 
         return redirect(url_for('add_director'))
 
-    return render_template('/director/addDirector.html', title='Add Director', form=form, legend='Add Director')
+    return render_template('director/addDirector.html', title='Add Director', form=form, legend='Add Director')
 
 
 
