@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Add Director
+{% endblock %}
+
+{% block content %}
+<legend class="border-bottom mb-4 text-info">{{legend}}</legend>
+
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+
+       {{ form.first_name.label}}
+        {{ form.first_name(size=32)}}
+
+        {{ form last_name.label}}
+        {{ form.last_name(size=32)}}
+
+        {{ form film.label}}
+        {{ form.film(size=32)}}
+
+        {{ form.submit() }}
+
+    </form>
+{% endblock %}

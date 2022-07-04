@@ -1,19 +1,18 @@
-
 from app import db
 from datetime import date
 
 
-country_table = db.Table('country',
+country_table = db.Table('countries',
                          db.Column('film_id', db.Integer, db.ForeignKey('film.id)')),
                          db.Column('country_id', db.Integer, db.ForeignKey('country.id')))
 
 
-category_table = db.Table('category',
+category_table = db.Table('categories',
                           db.Column('film_id', db.Integer, db.ForeignKey('film.id)')),
                           db.Column('category_id', db.Integer, db.ForeignKey('category.id')))
 
 
-director_table = db.Table('director',
+director_table = db.Table('directors',
                           db.Column('film_id', db.Integer, db.ForeignKey('film.id)')),
                           db.Column('director_id', db.Integer, db.ForeignKey('director.id')))
 
@@ -38,9 +37,9 @@ class Category(db.Model):
 class Film(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(64))
-    release_date = db.Column(db.Datetime, default=date.today())
+    release_date = db.Column(db.Date, default=date.today())
     created_in_country = db.Column(db.String(64), db.ForeignKey('country.id'))
-    available_in_countries = db.relationship('Country', secondary=country_table)
+    available_in_countries = db.relationship('Country', secondary=country_table, backref=db.backref('country', lazy='dynamic'))
     category = db.relationship('Category', secondary=category_table)
     director = db.relationship('Director', secondary=director_table)
 
