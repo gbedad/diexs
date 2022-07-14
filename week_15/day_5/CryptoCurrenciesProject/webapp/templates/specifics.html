@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Currencies
+{% endblock %}
+
+{% block content %}
+    <img src="{{crypto[selected_id].logo}}">
+    <h2>{{ crypto[selected_id].name }}</h2>
+<h5><span class="fw-4 ">Symbol: </span><span class="text-success">{{ crypto[selected_id].symbol }}</span></h5>
+    <p><span class="fw-bold">Description: </span>{{ crypto[selected_id].description }}</p>
+    {% for url in crypto[selected_id].urls.website %}
+       <a href="{{ url }}">{{ url }}</a><br>
+    {% endfor %}
+    <br>
+    <p><span class="fw-bold">First Historical Data: </span>{{ crypto[selected_id].date_added }}</p>
+    <span class="fw-bold">Tags: </span>
+    {% for tag in crypto[selected_id].tags %}
+        {{tag}}<span>  </span>
+    {% endfor %}
+{% endblock %}
