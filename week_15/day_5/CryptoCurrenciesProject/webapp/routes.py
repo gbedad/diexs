@@ -1,6 +1,6 @@
 from webapp import app
 from webapp.models import Cryptocurrencies, User
-from flask import render_template_string, render_template, redirect, url_for, flash
+from flask import render_template_string, render_template, redirect, url_for, flash, request
 from webapp import forms
 from flask_login import login_user, current_user, logout_user, login_required
 from webapp import db, bcrypt
@@ -71,18 +71,17 @@ def get_currency(crypto_id):
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
 
     form = forms.RegistrationForm()
 
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=form.username.data, password=hashed_password, email=form.email.data,
-                    fullname=form.fullname.data)
+        user = User(username=form.username.data, password=hashed_password, email=form.email.data)
         db.session.add(user)
 
         db.session.commit()
-        flash('Registered to an existing team', 'success')
+        flash('Your are now registred', 'success')
         return redirect(url_for('login'))
 
     return render_template('register.html', title='Register', form=form, legend='Registration Form')
@@ -90,25 +89,18 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if current_user.is_authenticated: # Check if the user is not already logged in
+    if current_user.is_authenticated:
         return redirect(url_for('index'))
-
-    form = forms.LoginForm() # Load the form
-
+    form = forms.LoginForm()
     if form.validate_on_submit():
-        # Retrieve the user with the username
-        user = User.query.filter_by(username=form.username.data).first()
-
-        # Check if it exist and if the password is the right password
-        if user is None or not user.password == form.password.data:
-            flash('Invalid username or password')
-            return redirect(url_for('login'))
-
-        # Log the user in
-        login_user(user, remember=form.remember_me.data)
-        return redirect(url_for('index'))
-
-    return render_template('login.html', title='Sign In', form=form) # Render the form
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user, remember=form.remember_me.data)
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('index'))
+        else:
+            flash('Login Unsuccessful, please check username and password', 'danger')
+    return render_template('login.html', title='Login', form=form, legend='Login Form')
 
 
 @app.route('/logout')
