@@ -10,22 +10,22 @@ import jwt
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-"""cryptocurrencies_table = db.Table('currencies',
+
+cryptocurrencies_table = db.Table('currencies',
                                   db.Column("user_id", db.Integer, db.ForeignKey("user.id")),
                                   db.Column("crypto_id", db.Integer, db.ForeignKey("cryptocurrencies.id")))
 
 users_table = db.Table('users',
                        db.Column("user_id", db.Integer, db.ForeignKey("user.id")),
-                       db.Column("crypto_id", db.Integer, db.ForeignKey("cryptocurrencies.id")))"""
+                       db.Column("crypto_id", db.Integer, db.ForeignKey("cryptocurrencies.id")))
 
 
 class User(UserMixin, db.Model):
-    __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(64))
     email = db.Column(db.String(64))
     password = db.Column(db.String(64))
-    #currencies = db.relationship("Cryptocurrencies", secondary=cryptocurrencies_table, back_populates="user")
+    currencies = db.relationship("Cryptocurrencies", secondary=cryptocurrencies_table, back_populates="users")
 
     '''def get_reset_token(self, expires_sec=1800):
         s = Serializer(app.config['SECRET_KEY'], expires_sec)
@@ -72,7 +72,6 @@ class User(UserMixin, db.Model):
 
 
 class Cryptocurrencies(db.Model):
-    __tablename__ = "cryptocurrencies"
     id = db.Column(db.Integer, primary_key=True, autoincrement=False)
     name = db.Column(db.String(64))
     symbol = db.Column(db.String(64))
@@ -80,7 +79,7 @@ class Cryptocurrencies(db.Model):
     first_historical_data = db.Column(db.String(64))
     last_historical_data = db.Column(db.String(64))
     is_active = db.Column(db.Integer)
-    #users = db.relationship("User", secondary=users_table, back_populates="cryptocurrencies")
+    users = db.relationship("User", secondary=cryptocurrencies_table, back_populates="currencies")
 
     def get_info(self):
         crypto = Cryptocurrencies.query.filter_by(self.id)

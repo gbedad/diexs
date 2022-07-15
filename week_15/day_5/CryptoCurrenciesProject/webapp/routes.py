@@ -182,3 +182,22 @@ def reset_token(token):
 
     return render_template('reset_token.html', title='Reset Password', form=form)
 
+
+@app.route('/currency/add/<crypto_id>')
+@login_required
+def add_currency(crypto_id):
+    user = current_user
+    currency = Cryptocurrencies.query.filter_by(id=crypto_id).first()
+    if currency in user.currencies:
+        flash(f'{currency} already in portfolio', 'warning')
+        return redirect(url_for('index'))
+
+    user.currencies.append(currency)
+    db.session.commit()
+    flash(f'{currency} successfully added to your portfolio', 'info')
+
+    return redirect(url_for('index'))
+
+
+
+
