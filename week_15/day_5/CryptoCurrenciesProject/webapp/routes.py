@@ -1,9 +1,10 @@
-from webapp import app
+from webapp import app, db, bcrypt, mail
 from webapp.models import Cryptocurrencies, User
-from flask import render_template_string, render_template, redirect, url_for, flash, request
+from flask import render_template, redirect, url_for, flash, request
 from webapp import forms
 from flask_login import login_user, current_user, logout_user, login_required
-from webapp import db, bcrypt
+from webapp.mailing import send_email
+from flask_mail import Message
 
 
 from requests import Request, Session
@@ -68,6 +69,30 @@ def get_currency(crypto_id):
     return render_template("specifics.html", crypto=data, selected_id=str(crypto_id))
 
 
+@app.route('/currency/send_email')
+@login_required
+def send_email_info():
+    coin_name = request.args.get('coin_name', None)
+    symbol = request.args.get('symbol', None)
+    description = request.args.get('description', None)
+    user = current_user
+    msg = Message(f'Information Request',
+                  sender='noreply@gmail.com',
+                  recipients=[user.email])
+    msg.body = f'''Dear {user.username},
+    Please find thereafter the requested information about {coin_name}:
+    The symbol is: {symbol}
+    Description: {description}.
+    
+    Yours,
+    
+    The CryptoCoins team
+    '''
+    mail.send(msg)
+    flash('A message with the information has been sent. Check your email.', 'info')
+    return redirect(url_for('index'))
+
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -107,3 +132,53 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+
+def send_reset_email(user):
+    token = user.get_reset_password_token()
+    msg = Message('Password Reset Request',
+                  sender='noreply@gmail.com',
+                  recipients=[user.email])
+    msg.body = f'''To reset your password, visit the following link:
+    {url_for('reset_token', token=token, _external=True)}
+        If you did not make this request then simply ignore this email and no change will be made.
+    '''
+    mail.send(msg)
+
+
+@app.route('/reset_password', methods=['GET', 'POST'])
+def reset_request():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = forms.ResetPasswordRequestForm()
+
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+
+        if user:
+            send_reset_email(user)
+
+        flash('An email has been sent', 'info')
+        return redirect(url_for('login'))
+    return render_template('reset_request.html', title='Reset Password', form=form)
+
+
+@app.route('/reset_password/<token>', methods=['GET', 'POST'])
+def reset_token(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    user = User.verify_reset_password_token(token)
+    if user is None:
+        flash('That is invalid or expired token', 'warning')
+        return redirect(url_for('reset_request'))
+    form = forms.ResetPasswordForm()
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user.password = hashed_password
+
+        db.session.commit()
+        flash('Your password has been updated', 'success')
+        return redirect(url_for('login'))
+
+    return render_template('reset_token.html', title='Reset Password', form=form)
+

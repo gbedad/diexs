@@ -5,7 +5,12 @@
 {% endblock %}
 
 {% block content %}
+<div class="d-flex justify-content-between">
     <img src="{{crypto[selected_id].logo}}">
+    <a href="{{url_for('send_email_info', coin_name=crypto[selected_id].name,
+    symbol=crypto[selected_id].symbol, description=crypto[selected_id].description) }}" class="btn btn-outline-info m-3">Send Info by Email</a>
+</div>
+
     <h2>{{ crypto[selected_id].name }}</h2>
     <h5><span class="fw-4 ">Symbol: </span><span class="text-success">{{ crypto[selected_id].symbol }}</span></h5>
     <p><span class="fw-bold">Description: </span>{{ crypto[selected_id].description }}</p>

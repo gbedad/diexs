@@ -1,5 +1,9 @@
-from webapp import db, login_mngr
-from flask_login import UserMixin, login_manager
+
+from webapp import db, login_mngr, app
+from flask_login import UserMixin
+from itsdangerous import TimedSerializer as Serializer
+import time
+import jwt
 
 
 @login_mngr.user_loader
@@ -22,6 +26,46 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(64))
     password = db.Column(db.String(64))
     #currencies = db.relationship("Cryptocurrencies", secondary=cryptocurrencies_table, back_populates="user")
+
+    '''def get_reset_token(self, expires_sec=1800):
+        s = Serializer(app.config['SECRET_KEY'], expires_sec)
+        return s.dumps({'user_id': self.id}).decode('utf-8')
+
+    @staticmethod
+    def verify_reset_token(token):
+        s = Serializer(app.config['SECRET_KEY'])
+        try:
+            user_id = s.loads(token)['id']
+        except:
+            return None
+        return User.query.get(user_id)'''
+
+    def get_reset_password_token(self, expires_in=600):
+        timeout = time.time() + expires_in
+        payload = {
+            'reset_password': self.id,
+            'exp': timeout
+        }
+
+        # Get the secret key from config
+        secret_key = app.config['SECRET_KEY']
+
+        # Create the token
+        token = jwt.encode(payload, secret_key, algorithm="HS256")
+
+        # Turn it to string
+        s_token = token
+
+        return s_token
+
+    @staticmethod
+    def verify_reset_password_token(token):
+        try:
+            id = jwt.decode(token, app.config['SECRET_KEY'],
+                            algorithms=['HS256'])['reset_password']
+        except:
+            return
+        return User.query.get(id)
 
     def __repr__(self):
         return f'<User: {self.username}>'
