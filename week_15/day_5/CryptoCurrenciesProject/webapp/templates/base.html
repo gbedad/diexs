@@ -20,7 +20,7 @@
       <ul class="navbar-nav">
           {% if current_user.is_authenticated %}
           <li class="nav-item">
-              <a class="nav-link text-warning" href=""><i class="bi bi-person-circle"></i><span> </span>{{current_user.username}}</a>
+              <a class="nav-link text-warning" href="{{url_for('show_user_currencies')}}"><i class="bi bi-person-circle"></i><span> </span>{{current_user.username}}</a>
         </li>
           <li class="nav-item">
           <a class="nav-link" href="{{url_for('logout')}}">Logout</a>

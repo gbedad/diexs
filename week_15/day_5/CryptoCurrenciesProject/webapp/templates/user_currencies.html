@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+User Currencies
+{% endblock title %}
+{% block content %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for crypto in data %}
+          <div class="col">
+            <div class="card h-100">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{crypto.name}}</h5>
+                <p class="card-text">{{crypto.symbol}}</p>
+                  <p class="card-text">{{crypto.first_historical_data}}</p>
+                  <p class="card-text">{{crypto.last_historical_data}}</p>
+              </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock content %}

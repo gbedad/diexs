@@ -199,5 +199,15 @@ def add_currency(crypto_id):
     return redirect(url_for('index'))
 
 
+@app.route('/currencies/user')
+@login_required
+def show_user_currencies():
+    user = current_user
+    user_currencies = user.currencies
+
+    return render_template('user_currencies.html', data=user_currencies,  title='User Currencies', legend='My Crypto Coins')
+
+
+
 
 
