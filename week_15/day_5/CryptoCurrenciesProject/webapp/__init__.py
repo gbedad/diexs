@@ -8,6 +8,8 @@ import flask_mail
 from os import getenv
 import babel
 import dateutil.parser
+from babel.numbers import format_currency
+
 
 from dotenv import load_dotenv
 
@@ -47,6 +49,11 @@ def _jinja2_filter_datetime(date, fmt=None):
     native = date.replace(tzinfo=None)
     format='%b %d, %Y'
     return native.strftime(format)
+
+
+@app.template_filter()
+def usdollar(value):
+    return format_currency(value, 'USD', locale='en_US')
 
 
 from webapp import routes, models, forms

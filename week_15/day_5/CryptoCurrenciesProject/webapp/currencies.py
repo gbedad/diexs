@@ -7,6 +7,7 @@ import json
 import schedule
 import time
 
+
 def set_crypto_in_db():
     url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/map'
     parameters = {
@@ -29,7 +30,6 @@ def set_crypto_in_db():
         print(all_currencies)
     except (ConnectionError, Timeout, TooManyRedirects) as e:
         print(e)
-
 
     for currency in all_currencies:
         c = Cryptocurrencies.query.filter_by(id=currency["id"]).first()

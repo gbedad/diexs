@@ -208,6 +208,48 @@ def show_user_currencies():
     return render_template('user_currencies.html', data=user_currencies,  title='User Currencies', legend='My Crypto Coins')
 
 
+@app.route('/currency/delete/<crypto_id>')
+@login_required
+def delete_currency(crypto_id):
+    user = current_user
+    currency = Cryptocurrencies.query.filter_by(id=crypto_id).first()
+    if currency not in user.currencies:
+        flash(f'{currency} not in portfolio, you cannot delete', 'danger')
+        return redirect(url_for('index'))
+
+    user.currencies.remove(currency)
+    db.session.commit()
+    flash(f'{currency} successfully removed from your portfolio', 'info')
+
+    return redirect(url_for('show_user_currencies'))
+
+
+@app.route('/currency/market/<int:crypto_id>')
+@login_required
+def get_market_info(crypto_id):
+
+    url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest'
+
+    parameters = {
+        'convert': 'USD'
+    }
+    headers = {
+        'Accepts': 'application/json',
+        'X-CMC_PRO_API_KEY': '91f90390-6831-4e62-b62e-824b6d76ae02',
+    }
+
+    session = Session()
+    session.headers.update(headers)
+
+    try:
+        response = session.get(url, params=parameters)
+        data = json.loads(response.text)["data"]
+        filtered = [x for x in data if x["id"] == crypto_id]
+        print(filtered)
+
+    except (ConnectionError, Timeout, TooManyRedirects) as e:
+        print(e)
+    return render_template('details.html', data=filtered[0])
 
 
 

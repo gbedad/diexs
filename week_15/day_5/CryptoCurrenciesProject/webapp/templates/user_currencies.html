@@ -15,8 +15,14 @@ User Currencies
                   <p class="card-text"><span class="fw-bold">First historical data: </span>{{crypto.first_historical_data|strftime}}</p>
                   <p class="card-text"><span class="fw-bold">Last historical data: </span>{{crypto.last_historical_data|strftime}}</p>
               </div>
+                <div class="card-footer bg-transparent d-flex justify-content-between">
+                    <a href="{{url_for('get_market_info', crypto_id=crypto.id )}}" class="btn btn-info" >Get Info</a>
+                    <a href="{{url_for('delete_currency', crypto_id=crypto.id )}}" class="btn btn-danger">Remove</a>
+                </div>
             </div>
         </div>
     {% endfor %}
     </div>
+
+
 {% endblock content %}
