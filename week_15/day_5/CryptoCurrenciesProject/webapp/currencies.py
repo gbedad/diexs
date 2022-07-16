@@ -51,27 +51,34 @@ def set_crypto_in_db():
 def add_logo():
     cryptos_in_db = Cryptocurrencies.query.all()
     url_metadata_v2 = 'https://pro-api.coinmarketcap.com/v2/cryptocurrency/info'
+    crypto_ids_list = []
     for crypto in cryptos_in_db:
-        crypto_id = crypto.id
-        print(crypto_id)
-        parameter = {
-            'id': crypto.id,
-        }
-        headers = {
-            'Accepts': 'application/json',
-            'X-CMC_PRO_API_KEY': '91f90390-6831-4e62-b62e-824b6d76ae02',
-        }
+        print(crypto.id)
+        crypto_ids_list.append(str(crypto.id))
+    s = ",".join(crypto_ids_list)
+    print(s)
+    parameter = {
+        'id': s,
+    }
+    headers = {
+        'Accepts': 'application/json',
+        'X-CMC_PRO_API_KEY': '91f90390-6831-4e62-b62e-824b6d76ae02',
+    }
 
-        session = Session()
-        session.headers.update(headers)
-        try:
-            response = session.get(url_metadata_v2, params=parameter)
-            data = json.loads(response.text)["data"]
-        except (ConnectionError, Timeout, TooManyRedirects) as e:
-            print(e)
-        crypto.logo = data[str(crypto_id)]["logo"]
+    session = Session()
+    session.headers.update(headers)
+    try:
+        response = session.get(url_metadata_v2, params=parameter)
+        data = json.loads(response.text)["data"]
+    except (ConnectionError, Timeout, TooManyRedirects) as e:
+        print(e)
 
-        db.session.commit()
+    for value in data.values():
+        c = Cryptocurrencies.query.filter_by(id=value['id']).first()
+        print(c)
+        c.logo = value['logo']
+
+    db.session.commit()
 
 
 schedule.every().day.at("00:00").do(set_crypto_in_db)
