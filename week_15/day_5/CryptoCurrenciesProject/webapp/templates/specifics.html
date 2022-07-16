@@ -23,7 +23,7 @@
        <a href="{{ url }}">{{ url }}</a><br>
     {% endfor %}
     <br>
-    <p><span class="fw-bold">First Historical Data: </span>{{ crypto[selected_id].date_added }}</p>
+    <p><span class="fw-bold">First Historical Data: </span>{{ crypto[selected_id].date_added|strftime }}</p>
     <span class="fw-bold">Tags: </span>
     {% for tag in crypto[selected_id].tags %}
         {{tag}}<span>  </span>

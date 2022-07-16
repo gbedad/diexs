@@ -6,6 +6,8 @@ from flask_bcrypt import Bcrypt
 import os
 import flask_mail
 from os import getenv
+import babel
+import dateutil.parser
 
 from dotenv import load_dotenv
 
@@ -37,6 +39,14 @@ login_mngr.login_message_category = 'info'
 bcrypt = Bcrypt(app)
 
 mail = flask_mail.Mail(app)
+
+
+@app.template_filter('strftime')
+def _jinja2_filter_datetime(date, fmt=None):
+    date = dateutil.parser.parse(date)
+    native = date.replace(tzinfo=None)
+    format='%b %d, %Y'
+    return native.strftime(format)
 
 
 from webapp import routes, models, forms

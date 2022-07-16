@@ -3,16 +3,17 @@
 User Currencies
 {% endblock title %}
 {% block content %}
+<h1 class="text-success h3 mb-3 fw-normal">{{ legend }}</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for crypto in data %}
           <div class="col">
             <div class="card h-100">
-              <img src="..." class="card-img-top" alt="...">
+              <img src="{{crypto.logo}}" class="" alt="coin logo" width="90px">
               <div class="card-body">
                 <h5 class="card-title">{{crypto.name}}</h5>
-                <p class="card-text">{{crypto.symbol}}</p>
-                  <p class="card-text">{{crypto.first_historical_data}}</p>
-                  <p class="card-text">{{crypto.last_historical_data}}</p>
+                <p class="card-text"><span class="fw-bold">Symbol: </span>{{crypto.symbol}}</p>
+                  <p class="card-text"><span class="fw-bold">First historical data: </span>{{crypto.first_historical_data|strftime}}</p>
+                  <p class="card-text"><span class="fw-bold">Last historical data: </span>{{crypto.last_historical_data|strftime}}</p>
               </div>
             </div>
         </div>

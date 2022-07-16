@@ -78,6 +78,7 @@ class Cryptocurrencies(db.Model):
     slug = db.Column(db.String(64))
     first_historical_data = db.Column(db.String(64))
     last_historical_data = db.Column(db.String(64))
+    logo = db.Column(db.String(64))
     is_active = db.Column(db.Integer)
     users = db.relationship("User", secondary=cryptocurrencies_table, back_populates="currencies")
 
