@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+Currencies
+{% endblock title %}
+{% block content %}
+<table class="table table-striped table-bordered">
+  <thead>
+      <th scope="col">Logo</th>
+      <th scope="col">Name</th>
+      <th scope="col">Symbol</th>
+      <th scope="col">Slug</th>
+      <th scope="col">First Historical Data</th>
+      <th scope="col">Last Historical Data</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for crypto in values %}
+    <tr>
+      <td><img src="{{ crypto.logo }}" width="50px"></td>
+      <td>{{ crypto.name }}</td>
+      <td>{{ crypto.symbol }}</td>
+      <td>{{ crypto.slug }}</td>
+      <td>{{ crypto.first_historical_data|strftime }}</td>
+      <td>{{ crypto.last_historical_data|strftime }}</td>
+      <td><a href="{{url_for('get_currency', crypto_id=crypto.id)}}"><button class="btn sm">Info</button></a></td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
+
+<!--TODO add a menu from bootstrap and buttons -->

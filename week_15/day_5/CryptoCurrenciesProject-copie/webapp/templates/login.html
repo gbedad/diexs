@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login
+{% endblock title %}
+{% block content %}
+<main class="form-signin w-100 m-auto">
+    <h1 class="h3 mb-3 fw-normal">Sign In Form</h1>
+    <form method="post">
+        {{ form.hidden_tag() }}
+         <div class="form-floating">
+            <p>
+                {{ form.email.label }}<br>
+                {{ form.email(size=32) }}
+                {% for error in form.email.errors %}
+                <span class="danger">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+         </div>
+         <div class="form-floating">
+            <p >
+                {{ form.password.label }}<br>
+                {{ form.password(size=32) }}
+                {% for error in form.password.errors %}
+                <span class="danger">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+         </div>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <div class="form-group">
+            <button class="w-100 btn btn-lg" >{{ form.submit(class="btn btn-outline-info") }}</button>
+            <small class="text-muted ml-2">
+                <a href="{{url_for('reset_request')}}">Forgot password</a>
+            </small>
+        </div>
+    </form>
+        <small class="text-muted">New User? <a href="{{ url_for('register') }}">Click to Register!</a></small>
+
+    </main>
+
+{% endblock %}
